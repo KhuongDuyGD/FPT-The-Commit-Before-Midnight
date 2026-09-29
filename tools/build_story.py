@@ -364,6 +364,59 @@ add(endings, prose(1998, 2089),
     "    return",
 )
 
-(GAME / "script.rpy").write_text("\n".join(script) + "\n", encoding="utf-8")
-(GAME / "endings.rpy").write_text("\n".join(endings) + "\n", encoding="utf-8")
+def integrate_chapters(lines):
+    """Keep Ch1 dialogue verbatim while annotating physical entrances/exits."""
+    result, label = [], ""
+    casts = {
+        "scene_00_alarm": ('player',), "scene_01_gate": ('player',),
+        "scene_02_quiz": ('player', 'minh', 'thaydev'),
+        "scene_03_break": ('player', 'minh'),
+        "scene_04_project": ('player', 'minh', 'linh'),
+        "scene_05_lunch": ('player', 'minh'), "scene_06_windows": ('player', 'minh'),
+        "scene_07_final_class": ('player', 'minh', 'thaydev'),
+        "scene_08_final_choice": ('player', 'minh'),
+    }
+    for line in lines:
+        if line.startswith('label '):
+            label = line.split()[1].rstrip(':')
+        if label == 'good_ending' and line == '    call screen post_ending_actions':
+            line = '    call screen chapter1_good_actions'
+        if label == 'good_ending' and line == '    $ renpy.save_persistent()':
+            result.extend(['    $ chapter1_canonical_result = "good"', '    $ unlock_chapter2()'])
+        result.append(line)
+        indent = line[:len(line) - len(line.lstrip())]
+        if line == 'label start:':
+            result.extend(['    $ current_chapter = 1', '    $ chapter1_canonical_result = None',
+                           '    $ reset_chapter2_state()', '    $ set_stage()'])
+        if line.lstrip().startswith('scene '):
+            background = line.split()[1]
+            transition = line.split(' with ', 1)[1] if ' with ' in line else None
+            if transition:
+                result[-1] = indent + 'scene ' + background
+            cast = casts.get(label, ('player',))
+            if label == 'good_ending':
+                cast = ('player',) if background == 'bedroom_gaming' else ('player', 'baove')
+            elif label == 'bad_ending':
+                cast = ('player', 'minh', 'linh')
+                if background == 'computer_lab':
+                    cast += ('colms',)
+                elif background == 'school_gate_night':
+                    cast = ('player', 'baove')
+                elif background == 'bedroom_morning':
+                    cast = ('player',)
+            result.append(indent + '$ set_stage(' + ', '.join(repr(v) for v in cast) + ')')
+            if transition:
+                result.append(indent + 'with ' + transition)
+        if line.strip() == 'n "MINH đứng bên trong."':
+            result.append(indent + '$ set_stage("player", "minh")')
+        if line.strip() == 'n "CÔ LMS xuất hiện như bóng ma phía sau giao diện."':
+            result.append(indent + '$ set_stage("player", "minh", "thaydev", "colms")')
+        if line.strip() == 'n "CÔ LMS xuất hiện ở góc màn hình."':
+            result.append(indent + '$ set_stage("player", "minh", "colms")')
+        if line.strip() == 'centered "23:47"':
+            result.append(indent + '$ set_stage("player")')
+    return result
+
+(GAME / "script.rpy").write_text("\n".join(integrate_chapters(script)) + "\n", encoding="utf-8")
+(GAME / "endings.rpy").write_text("\n".join(integrate_chapters(endings)) + "\n", encoding="utf-8")
 print("Wrote game/script.rpy and game/endings.rpy from screenplay v2.0")

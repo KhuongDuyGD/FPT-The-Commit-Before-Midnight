@@ -28,34 +28,39 @@ image computer_lab = Transform("images/backgrounds/ComputerLabDay.png", size=(12
 # Title-screen art. GameMainMenu.png has decorative baked-in buttons; the
 # clickable controls in screens.rpy sit in a panel above those decorations.
 image game_main_menu_background = Transform("images/backgrounds/GameMainMenu.png", size=(1280, 720))
-image game_logo = Transform("images/backgrounds/LogoGame.png", zoom=0.27)
+image game_logo = Transform("images/backgrounds/LogoGame.png", zoom=0.22)
 
-# New standees are 1086x1448, so 0.43 keeps them below the dialogue box.
-# All three PLAYER expressions share one Ren'Py image tag and replace each other.
-image player = Transform("images/characters/MainNormal.png", zoom=0.43)
-image player happy = Transform("images/characters/MainGoodMood.png", zoom=0.43)
-image player exhausted = Transform("images/characters/MainExhaust.png", zoom=0.43)
-image player angry = Transform("images/characters/MainAngry.png", zoom=0.43)
-image player cry = Transform("images/characters/MainCry.png", zoom=0.43)
-image minh = Transform("images/characters/MinhAnime.png", zoom=0.43)
-image linh = Transform("images/characters/LinhAnime.png", zoom=0.43)
-image thaydev = Transform("images/characters/TeacherDev.png", zoom=0.43)
-image colms = Transform("images/characters/MissLMS.png", zoom=0.43)
-image baove = Transform("images/characters/MrSercurity.png", zoom=0.43)
+define CHARACTER_HEIGHT = 620
+
+init -15 python:
+    def character_sprite(filename):
+        # Match height, preserve aspect ratio, and allow broad characters to be
+        # wider. A fixed width/height contain box shrank the PE teacher to 448px.
+        return Transform("images/characters/" + filename, ysize=CHARACTER_HEIGHT, fit="contain")
+
+# Every standee shares the same baseline and height, including all expressions.
+# Image tags are unchanged so existing saves still resolve the same artwork.
+image player = character_sprite("MainNormal.png")
+image player happy = character_sprite("MainGoodMood.png")
+image player exhausted = character_sprite("MainExhaust.png")
+image player angry = character_sprite("MainAngry.png")
+image player cry = character_sprite("MainCry.png")
+image minh = character_sprite("MinhAnime.png")
+image linh = character_sprite("LinhAnime.png")
+image thaydev = character_sprite("TeacherDev.png")
+image colms = character_sprite("MissLMS.png")
+image baove = character_sprite("MrSercurity.png")
 image black = Solid("#000000")
 
 # Character color identifies speakers even while placeholder sprites are used.
-define p = Character("PLAYER", color="#ffcc72")
-define m = Character("MINH", color="#91d4ff")
-define l = Character("LINH", color="#d0a7ff")
-define dev = Character("THẦY DEV", color="#aef0c3")
-define lms = Character("CÔ LMS", color="#ff667a")
-define guard = Character("CHÚ BẢO VỆ", color="#f5dda1")
-define n = Character(None)
-define crowd = Character("CẢ LỚP")
-define student = Character("MỘT SINH VIÊN")
-define friend = Character("BẠN BÈ DISCORD")
-define voice_chat = Character("VOICE CHAT")
-
-# The say screen picks a sprite from the current speaker. Story labels never
-# need to remember to hide a character when someone else starts speaking.
+define p = Character("PLAYER", color="#ffcc72", callback=partial(stage_speaker, "player"))
+define m = Character("MINH", color="#91d4ff", callback=partial(stage_speaker, "minh"))
+define l = Character("LINH", color="#d0a7ff", callback=partial(stage_speaker, "linh"))
+define dev = Character("THẦY DEV", color="#aef0c3", callback=partial(stage_speaker, "thaydev"))
+define lms = Character("CÔ LMS", color="#ff667a", callback=partial(stage_speaker, "colms"))
+define guard = Character("CHÚ BẢO VỆ", color="#f5dda1", callback=partial(stage_speaker, "baove"))
+define n = Character(None, callback=partial(stage_speaker, None))
+define crowd = Character("CẢ LỚP", callback=partial(stage_speaker, None))
+define student = Character("MỘT SINH VIÊN", callback=partial(stage_speaker, None))
+define friend = Character("BẠN BÈ DISCORD", callback=partial(stage_speaker, None))
+define voice_chat = Character("VOICE CHAT", callback=partial(stage_speaker, None))

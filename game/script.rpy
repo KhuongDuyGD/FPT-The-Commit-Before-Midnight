@@ -3,6 +3,10 @@
 # when replacing the screenplay with a new version.
 
 label start:
+    $ current_chapter = 1
+    $ chapter1_canonical_result = None
+    $ reset_chapter2_state()
+    $ set_stage()
     # Explicit resets make Start Game and New Game+ share the same baseline.
     $ energy = 100
     $ sanity = 100
@@ -23,7 +27,9 @@ label start:
     jump scene_00_alarm
 
 label scene_00_alarm:
-    scene bedroom_morning with fade
+    scene bedroom_morning
+    $ set_stage('player')
+    with fade
     n "Ánh sáng buổi sáng lọt qua rèm."
     n "Laptop trên bàn vẫn còn mở."
     n "Màn hình hiển thị launcher game."
@@ -37,7 +43,9 @@ label scene_00_alarm:
     n "Một buổi sáng tuyệt đẹp để một sinh viên trẻ tuổi học tập, phát triển bản thân và tiến gần hơn đến tương lai."
     pause 0.3
     n "Đáng tiếc, nhân vật chính của chúng ta đi ngủ lúc 2 giờ 47 phút sáng."
-    scene bedroom_gaming with fade
+    scene bedroom_gaming
+    $ set_stage('player')
+    with fade
     $ player_expression = "happy"
     centered "02:41 AM"
     voice_chat "Trận cuối nha."
@@ -47,7 +55,9 @@ label scene_00_alarm:
     p "Rematch."
     n "Đây được giới sử học hiện đại gọi là:"
     n "Sai lầm chiến lược."
-    scene bedroom_morning with fade
+    scene bedroom_morning
+    $ set_stage('player')
+    with fade
     $ player_expression = "exhausted"
     n "06:30."
     n "Điện thoại rung dữ dội."
@@ -97,7 +107,9 @@ label scene_00_alarm:
     jump scene_01_gate
 
 label scene_01_gate:
-    scene school_gate_morning with fade
+    scene school_gate_morning
+    $ set_stage('player')
+    with fade
     $ player_expression = "normal"
     centered "CAMPUS GATE"
     n "PLAYER chạy từ ngoài cổng vào."
@@ -115,6 +127,7 @@ label scene_01_gate:
     n "Một bàn tay thò ra."
     n "Cửa mở."
     n "MINH đứng bên trong."
+    $ set_stage("player", "minh")
     m "Ê."
     n "PLAYER bước vào, cúi người thở."
     p "Cảm ơn."
@@ -146,7 +159,9 @@ label scene_01_gate:
     jump scene_02_quiz
 
 label scene_02_quiz:
-    scene classroom with dissolve
+    scene classroom
+    $ set_stage('player', 'minh', 'thaydev')
+    with dissolve
     n "THẦY DEV bước vào."
     dev "Good morning."
     n "Cả lớp phản hồi với mức năng lượng của một nghĩa trang."
@@ -230,7 +245,9 @@ label scene_02_quiz:
     jump scene_03_break
 
 label scene_03_break:
-    scene hallway with fade
+    scene hallway
+    $ set_stage('player', 'minh')
+    with fade
     n "PLAYER bước ra hành lang."
     p "Coffee."
     m "Căn tin?"
@@ -298,7 +315,9 @@ label scene_03_break:
     jump scene_04_project
 
 label scene_04_project:
-    scene hallway with dissolve
+    scene hallway
+    $ set_stage('player', 'minh', 'linh')
+    with dissolve
     n "LINH mở laptop."
     l "Có tin tốt và tin xấu."
     p "Tin tốt trước."
@@ -369,7 +388,9 @@ label scene_04_project:
     jump scene_05_lunch
 
 label scene_05_lunch:
-    scene canteen with fade
+    scene canteen
+    $ set_stage('player', 'minh')
+    with fade
     n "PLAYER ngồi xuống."
     n "Trước mặt là đồ ăn."
     n "PLAYER nhìn khay cơm như nhìn thấy người thân thất lạc."
@@ -428,7 +449,9 @@ label scene_05_lunch:
     jump scene_06_windows
 
 label scene_06_windows:
-    scene computer_lab with fade
+    scene computer_lab
+    $ set_stage('player', 'minh')
+    with fade
     n "PLAYER ngồi xuống máy lab."
     p "Ok."
     n "PLAYER đặt tay lên chuột."
@@ -496,7 +519,9 @@ label scene_06_windows:
     jump scene_07_final_class
 
 label scene_07_final_class:
-    scene classroom_afternoon with fade
+    scene classroom_afternoon
+    $ set_stage('player', 'minh', 'thaydev')
+    with fade
     $ player_expression = "normal"
     n "Ánh nắng chiều tràn vào lớp."
     n "PLAYER nhìn đồng hồ."
@@ -540,6 +565,7 @@ label scene_07_final_class:
     n "Màn hình điện thoại sáng."
     n "Một notification."
     n "CÔ LMS xuất hiện như bóng ma phía sau giao diện."
+    $ set_stage("player", "minh", "thaydev", "colms")
     lms "Assignment published."
     p "Không."
     lms "Deadline."
@@ -554,7 +580,9 @@ label scene_07_final_class:
     jump scene_08_final_choice
 
 label scene_08_final_choice:
-    scene classroom_afternoon with dissolve
+    scene classroom_afternoon
+    $ set_stage('player', 'minh')
+    with dissolve
     $ player_expression = "normal"
     n "Laptop đã đóng."
     n "Balo đã đeo."
@@ -622,6 +650,7 @@ label scene_08_final_choice:
             m "Nice."
             l "Cảm ơn nha."
             n "CÔ LMS xuất hiện ở góc màn hình."
+            $ set_stage("player", "minh", "colms")
             lms "Excellent decision."
             p "Cô đừng tham gia vào chuyện này."
             jump bad_ending

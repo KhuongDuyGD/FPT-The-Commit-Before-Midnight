@@ -21,13 +21,17 @@ testcase good_route:
     advance until screen "ending_card"
     assert eval (escaped_school and persistent.good_ending_unlocked and escape_point >= 4 and final_choice == 'leave')
     click "Continue"
-    assert screen "post_ending_actions"
-    click "Start New Game+"
+    assert screen "chapter1_good_actions"
+    assert eval (persistent.chapter2_unlocked and persistent.chapter1_canonical_result == 'good')
+    click "Tiếp tục Chương 2"
     advance until screen "choice"
-    assert eval (energy == 100 and pending_tasks == 0 and not escaped_school)
+    assert eval (current_chapter == 2 and chapter2_started and NganHintsRemaining == 3 and chapter1_canonical_result == 'good')
 
 
 testcase bad_route:
+    python:
+        persistent.good_ending_unlocked = False
+        persistent.chapter2_unlocked = False
     run Jump("start")
     advance until screen "choice"
     click "Dậy. Ngay."
@@ -45,6 +49,7 @@ testcase bad_route:
     click "Ở lại thêm chút."
     advance until screen "ending_card"
     assert eval (not escaped_school and persistent.bad_ending_unlocked and assignment_uploaded and final_choice == 'stay')
+    assert eval (not chapter2_is_unlocked())
     click "Continue"
     advance until screen "post_ending_actions"
     assert screen "post_ending_actions"
@@ -94,3 +99,5 @@ testcase main_menu_assets:
     run ShowMenu("main_menu")
     assert screen "main_menu"
     assert eval (renpy.loadable("images/backgrounds/GameMainMenu.png") and renpy.loadable("images/backgrounds/LogoGame.png") and renpy.loadable("images/backgrounds/GameIcon.png"))
+    pause 1.0
+    screenshot "ch2-main-menu.png"

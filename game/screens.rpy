@@ -1,43 +1,28 @@
 # Self-contained 1280x720 UI. The default Ren'Py keyboard and mouse bindings
 # still supply normal advance, rollback, skip, and auto-forward behavior.
 
-init python:
-    def active_speaker_image(who):
-        """Return only the speaking character's standee; narration clears it."""
-        if who == "PLAYER":
-            if player_expression == "happy":
-                return "player happy"
-            if player_expression == "exhausted":
-                return "player exhausted"
-            if player_expression == "angry":
-                return "player angry"
-            if player_expression == "cry":
-                return "player cry"
-            return "player"
-        return {
-            "MINH": "minh",
-            "LINH": "linh",
-            "THẦY DEV": "thaydev",
-            "CÔ LMS": "colms",
-            "CHÚ BẢO VỆ": "baove",
-        }.get(who)
+define DIALOGUE_HEIGHT = 204
+define DIALOGUE_TOP = config.screen_height - DIALOGUE_HEIGHT
+define CHOICE_BOTTOM = DIALOGUE_TOP - 52
 
-screen say(who, what):
-    # A sprite belongs to this dialogue interaction. It automatically vanishes
-    # on narration and is replaced whenever the speaker changes.
-    $ sprite = active_speaker_image(who)
-    if sprite is not None:
-        add sprite:
-            xalign 0.5
-            yalign 1.0
+init python:
+    def choice_dialogue():
+        if _history_list:
+            return _history_list[-1].who, _history_list[-1].what
+        # Older saves were made with history disabled.
+        speaker = getattr(renpy.store, _last_say_who, None) if isinstance(_last_say_who, str) else _last_say_who
+        return getattr(speaker, "name", None), _last_say_what or ""
+
+screen dialogue_panel(who, what, instant=False):
+    # The master layer owns the directed shot; stage.rpy only changes focus.
     # Keep the speaker and every wrapped line inside one fixed dialogue panel.
     # Reserving the name row also keeps narrator text aligned with dialogue.
     window:
         id "window"
         xalign 0.5
         yalign 1.0
-        xsize 1240
-        ysize 204
+        xsize config.screen_width - 40
+        ysize DIALOGUE_HEIGHT
         xpadding 30
         ypadding 20
         background Solid("#101827f2")
@@ -48,24 +33,45 @@ screen say(who, what):
                 text who id "who" size 26 color "#ffd37b"
             else:
                 null height 31
-            text what id "what" xsize 1180 size 27 color "#f4f6fb" text_align 0.0
+            text what id "what" xsize config.screen_width - 100 size 27 color "#f4f6fb" text_align 0.0 slow_cps (0 if instant else True) substitute (not instant)
+
+screen say(who, what):
+    use dialogue_panel(who, what)
     use quick_menu
 
 
 screen choice(items):
     modal True
+    # Menus without a spoken prompt normally clear Ren'Py's say screen.
+    # Render the last line in the same panel, without replaying its callback.
+    if not renpy.get_screen("say"):
+        $ choice_who, choice_what = choice_dialogue()
+        use dialogue_panel(choice_who, choice_what, instant=True)
     vbox:
+        id "choice_list"
         xalign 0.5
-        yalign 0.45
-        spacing 18
+        ypos CHOICE_BOTTOM
+        yanchor 1.0
+        spacing 12
         for item in items:
             textbutton item.caption:
                 action item.action
-                xminimum 640
-                text_size 28
+                xsize 920
+                text_size 25
+                text_xmaximum 872
+                text_color ("#ffe1a5" if item.caption == "Gọi Ngân lại." else "#ffffff")
                 padding (24, 14)
-                background Solid("#253659ef")
+                background Solid("#594439ef" if item.caption == "Gọi Ngân lại." else "#253659ef")
                 hover_background Solid("#426195")
+        if hint_available():
+            textbutton "Hỏi Ngân ([NganHintsRemaining]/3)":
+                action Function(use_ngan_hint)
+                xalign 1.0
+                text_size 23
+                text_color "#a9dfff"
+                padding (20, 12)
+                background Solid("#172844f5")
+                hover_background Solid("#335479")
     use quick_menu
 
 
@@ -73,7 +79,9 @@ screen quick_menu():
     zorder 90
     frame:
         xalign 0.5
-        yalign 0.685
+        ypos DIALOGUE_TOP
+        yanchor 1.0
+        yoffset -8
         xpadding 16
         ypadding 5
         background Solid("#101827e8")
@@ -139,14 +147,16 @@ screen main_menu():
         background Solid("#10121dfc")
         vbox:
             xfill True
-            spacing 9
+            spacing 7
             add "game_logo" xalign 0.5
             null height 3
-            textbutton "New Game" action Start() xfill True ysize 47 text_size 27 text_color "#ffffff" text_hover_color "#13151d" background Solid("#242331") hover_background Solid("#f89b3c") xpadding 17
-            textbutton "Load" action ShowMenu("load") xfill True ysize 47 text_size 27 text_color "#ffffff" text_hover_color "#13151d" background Solid("#242331") hover_background Solid("#f89b3c") xpadding 17
-            textbutton "Ending Gallery" action ShowMenu("ending_gallery") xfill True ysize 47 text_size 27 text_color "#ffffff" text_hover_color "#13151d" background Solid("#242331") hover_background Solid("#f89b3c") xpadding 17
-            textbutton "Settings" action ShowMenu("preferences") xfill True ysize 47 text_size 27 text_color "#ffffff" text_hover_color "#13151d" background Solid("#242331") hover_background Solid("#f89b3c") xpadding 17
-            textbutton "Quit" action Quit(confirm=True) xfill True ysize 47 text_size 27 text_color "#ffffff" text_hover_color "#13151d" background Solid("#242331") hover_background Solid("#f89b3c") xpadding 17
+            textbutton "Continue" action Continue() xfill True ysize 43 text_size 25 text_color "#ffffff" text_insensitive_color "#858998" text_hover_color "#13151d" background Solid("#242331") hover_background Solid("#f89b3c") xpadding 17
+            textbutton "New Game" action Start() xfill True ysize 43 text_size 25 text_color "#ffffff" text_hover_color "#13151d" background Solid("#242331") hover_background Solid("#f89b3c") xpadding 17
+            textbutton "Chapter Select" action ShowMenu("chapter_select") xfill True ysize 43 text_size 25 text_color "#ffffff" text_hover_color "#13151d" background Solid("#242331") hover_background Solid("#f89b3c") xpadding 17
+            textbutton "Load" action ShowMenu("load") xfill True ysize 43 text_size 25 text_color "#ffffff" text_hover_color "#13151d" background Solid("#242331") hover_background Solid("#f89b3c") xpadding 17
+            textbutton "Ending Gallery" action ShowMenu("ending_gallery") xfill True ysize 43 text_size 25 text_color "#ffffff" text_hover_color "#13151d" background Solid("#242331") hover_background Solid("#f89b3c") xpadding 17
+            textbutton "Settings" action ShowMenu("preferences") xfill True ysize 43 text_size 25 text_color "#ffffff" text_hover_color "#13151d" background Solid("#242331") hover_background Solid("#f89b3c") xpadding 17
+            textbutton "Quit" action Quit(confirm=True) xfill True ysize 43 text_size 25 text_color "#ffffff" text_hover_color "#13151d" background Solid("#242331") hover_background Solid("#f89b3c") xpadding 17
 
 
 screen menu_navigation():
@@ -268,36 +278,7 @@ screen ending_gallery():
     tag menu
     add Solid("#11192b")
     text "ENDING GALLERY" xalign 0.5 ypos 52 size 46 bold True
-    hbox:
-        xalign 0.5
-        yalign 0.46
-        spacing 28
-        frame:
-            xsize 500
-            ysize 280
-            background Solid("#20443b" if persistent.good_ending_unlocked else "#29303c")
-            vbox:
-                xalign 0.5
-                yalign 0.5
-                spacing 17
-                text "GOOD ENDING — ESCAPE SUCCESSFUL" size 27 xalign 0.5 xmaximum 450 text_align 0.5
-                if persistent.good_ending_unlocked:
-                    textbutton "View ending" action Show("gallery_detail", ending="good") xalign 0.5
-                else:
-                    text "LOCKED" size 22 color "#9ba6b7" xalign 0.5
-        frame:
-            xsize 500
-            ysize 280
-            background Solid("#512d38" if persistent.bad_ending_unlocked else "#29303c")
-            vbox:
-                xalign 0.5
-                yalign 0.5
-                spacing 17
-                text "BAD ENDING — FPT HAS CONSUMED YOU" size 27 xalign 0.5 xmaximum 450 text_align 0.5
-                if persistent.bad_ending_unlocked:
-                    textbutton "View ending" action Show("gallery_detail", ending="bad") xalign 0.5
-                else:
-                    text "LOCKED" size 22 color "#9ba6b7" xalign 0.5
+    use chapter_gallery_contents
     use menu_navigation
 
 
@@ -312,9 +293,12 @@ screen gallery_detail(ending):
         if ending == "good":
             text "GOOD ENDING — ESCAPE SUCCESSFUL" xalign 0.5 size 45 color "#a7f0be"
             text "Student Status: ALIVE\nEnergy: Enough for one ranked match\nSanity: Functioning within acceptable parameters\nAssignments: Technically under control\nTomorrow: Future Me's problem\nAchievement: LOG OUT SUCCESSFULLY" xalign 0.5 text_align 0.5 size 23
-        else:
+        elif ending == "bad":
             text "BAD ENDING — FPT HAS CONSUMED YOU" xalign 0.5 size 45 color "#ff8190"
             text "Student Status: Technically Alive\nEnergy: 0%%\nSanity: SEGMENTATION FAULT\nPhysical Condition: Dried student\nAssignment: SUBMITTED\nPresentation: UPDATED\nGroup Project: Somehow still has one bug\nTomorrow's Meeting: 07:00\nAchievement: JUST ONE MORE TASK" xalign 0.5 text_align 0.5 size 22
+        else:
+            add ("cg_nghi_good" if ending == "nghi_good" else "cg_ngan" if ending == "ngan" else "nearby_pub_night") xysize (896, 504)
+            text ({"nghi_good": "LOVE PROTOCOL ESTABLISHED", "nghi_bad": "404 — LOVE NOT FOUND", "ngan": "YOU WERE NEVER LOST"}[ending]) size 32 xalign 0.5
         textbutton "Close" action Hide("gallery_detail") xalign 0.5
 
 

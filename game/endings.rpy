@@ -1,7 +1,9 @@
 # Version 2.0 ending routes. Gallery flags persist after the title card.
 
 label good_ending:
-    scene school_gate_afternoon with fade
+    scene school_gate_afternoon
+    $ set_stage('player', 'baove')
+    with fade
     $ player_expression = "happy"
     n "PLAYER bước ra cổng."
     n "Ánh sáng chiều."
@@ -35,7 +37,9 @@ label good_ending:
     n "Chỉ có một sinh viên đang đi bộ về nhà."
     n "Nhưng đối với cậu…"
     n "Đó là victory screen."
-    scene bedroom_gaming with fade
+    scene bedroom_gaming
+    $ set_stage('player')
+    with fade
     centered "HOME — 18:02"
     n "Cửa mở."
     n "Balo rơi xuống ghế."
@@ -79,13 +83,17 @@ label good_ending:
     hide screen stats_hud
     play sound sfx_success
     $ persistent.good_ending_unlocked = True
+    $ chapter1_canonical_result = "good"
+    $ unlock_chapter2()
     $ renpy.save_persistent()
     call screen ending_card("GOOD ENDING", "ESCAPE SUCCESSFUL", "Student Status: ALIVE\nEnergy: Enough for one ranked match\nSanity: Functioning within acceptable parameters\nAssignments: Technically under control\nTomorrow: Future Me's problem\n\nAchievement: LOG OUT SUCCESSFULLY")
-    call screen post_ending_actions
+    call screen chapter1_good_actions
     return
 
 label bad_ending:
-    scene classroom_afternoon with fade
+    scene classroom_afternoon
+    $ set_stage('player', 'minh', 'linh')
+    with fade
     centered "17:15"
     p "Ok."
     p "Fix xong."
@@ -101,7 +109,9 @@ label bad_ending:
     l "Responsive UI."
     n "PLAYER ngồi xuống lại."
     $ group_task_done = True
-    scene classroom_evening with fade
+    scene classroom_evening
+    $ set_stage('player', 'minh', 'linh')
+    with fade
     centered "18:34"
     p "Done."
     m "Assignment thầy?"
@@ -113,7 +123,9 @@ label bad_ending:
     p "Tôi chỉ tạm thời không nhớ."
     m "Đó là quên."
     p "Đừng dùng logic lúc này."
-    scene computer_lab with fade
+    scene computer_lab
+    $ set_stage('player', 'minh', 'linh', 'colms')
+    with fade
     $ player_expression = "angry"
     centered "20:12"
     n "PLAYER kéo file vào LMS."
@@ -160,7 +172,9 @@ label bad_ending:
     p "Cảm ơn bác sĩ."
     $ assignment_uploaded = True
     $ pending_tasks = max(0, pending_tasks - 1)
-    scene classroom_evening with fade
+    scene classroom_evening
+    $ set_stage('player', 'minh', 'linh')
+    with fade
     $ energy = min(energy, 12)
     $ sanity = min(sanity, 4)
     $ player_expression = "exhausted"
@@ -179,6 +193,7 @@ label bad_ending:
     p "Cảm ơn."
     p "Tôi không biết tại sao chuyện đó lại khó."
     centered "23:47"
+    $ set_stage("player")
     n "Phòng học gần như tối."
     n "Laptop là nguồn sáng chính."
     n "PLAYER nhấn Save."
@@ -217,7 +232,9 @@ label bad_ending:
     n "Dáng người giờ trông như một file JPEG bị nén 37 lần."
     p "Về."
     $ energy = 0
-    scene school_gate_night with fade
+    scene school_gate_night
+    $ set_stage('player', 'baove')
+    with fade
     n "PLAYER lê từng bước ra cổng."
     n "CHÚ BẢO VỆ nhìn thấy."
     guard "Em?"
@@ -258,7 +275,9 @@ label bad_ending:
     $ persistent.bad_ending_unlocked = True
     $ renpy.save_persistent()
     call screen ending_card("BAD ENDING", "FPT HAS CONSUMED YOU", "Student Status: Technically Alive\nEnergy: 0%%\nSanity: SEGMENTATION FAULT\nPhysical Condition: Dried student\nAssignment: SUBMITTED\nPresentation: UPDATED\nGroup Project: Somehow still has one bug\nTomorrow's Meeting: 07:00\n\nAchievement: JUST ONE MORE TASK")
-    scene bedroom_morning with fade
+    scene bedroom_morning
+    $ set_stage('player')
+    with fade
     play sound sfx_alarm
     centered "06:30 AM"
     n "Alarm."
