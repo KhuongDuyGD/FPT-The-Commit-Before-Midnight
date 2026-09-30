@@ -1,0 +1,2897 @@
+{
+  "source_sha256": "9825557ce5422d867befa81840f8ee2a7135c3c90f2a209778ef91667ea45945",
+  "content": [
+    {
+      "section": "1",
+      "index": 2,
+      "speaker": "NARRATOR",
+      "character": "n",
+      "text": "Sáng sớm tinh mơ. Chim hót. Lá cây xào xạc.\nMột ngày tốt lành mới bắt đầu cho muôn loài…",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 4,
+      "speaker": "NARRATOR",
+      "character": "n",
+      "text": "…ngoại trừ một thằng IT mới ngủ được khoảng bốn tiếng.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 7,
+      "speaker": "MINH (Discord)",
+      "character": "minh_discord",
+      "text": "Ván cuối nha.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 8,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Mày nói câu đó bốn ván rồi.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 9,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Lần này là ván cuối thật.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 10,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Thế sao nút “Find Match” của mày sáng vậy?",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 11,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Do game bug.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 12,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "À. Bug nằm ở ngón tay mày hả?",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 13,
+      "speaker": null,
+      "character": "system_msg",
+      "text": "Match found.",
+      "kind": "sys"
+    },
+    {
+      "section": "1",
+      "index": 14,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "…vào không?",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 15,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Vào.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 16,
+      "speaker": null,
+      "character": "system_msg",
+      "text": "Một quyết định có trách nhiệm đã được đưa ra.",
+      "kind": "sys"
+    },
+    {
+      "section": "1",
+      "index": 20,
+      "speaker": "GIỌNG NỮ LẠ",
+      "character": "unknown_woman",
+      "text": "Xin hãy tỉnh dậy… hỡi người được chọn~~",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 21,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "…Cái what the—",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 23,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Khoan… mặt này quen quen.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 24,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Ủa đây chả phải N***** trong game A****** à???",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 25,
+      "speaker": "NỮ THẦN",
+      "character": "goddess",
+      "text": "Anh đã lầm.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 26,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Ờ.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 27,
+      "speaker": "NỮ THẦN",
+      "character": "goddess",
+      "text": "Ta chỉ là vợ của tác giả trò chơi này.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 28,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "…Còn tệ hơn cái tôi vừa đoán.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 29,
+      "speaker": "NỮ THẦN",
+      "character": "goddess",
+      "text": "Im lặng. Tutorial đang chạy.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 30,
+      "speaker": null,
+      "character": "system_msg",
+      "text": "SYSTEM ENTITY: NECRASS_SIM.exe",
+      "kind": "sys"
+    },
+    {
+      "section": "1",
+      "index": 31,
+      "speaker": "NECRASS_SIM",
+      "character": "necrass_sim",
+      "text": "Ngươi là người được chọn.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 32,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Được chọn làm gì?",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 33,
+      "speaker": "NECRASS_SIM",
+      "character": "necrass_sim",
+      "text": "Đi học đúng giờ.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 34,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "…Trả tôi về được không, plz~?",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 35,
+      "speaker": "NECRASS_SIM",
+      "character": "necrass_sim",
+      "text": "Nah.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 36,
+      "speaker": "NECRASS_SIM",
+      "character": "necrass_sim",
+      "text": "Trong hành trình này, ngươi sẽ phải quản lý một nguồn tài nguyên vô cùng quý giá.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 38,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Mana?",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 39,
+      "speaker": "NECRASS_SIM",
+      "character": "necrass_sim",
+      "text": "Không.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 40,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Stamina?",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 41,
+      "speaker": "NECRASS_SIM",
+      "character": "necrass_sim",
+      "text": "Không.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 42,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Tiền?",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 43,
+      "speaker": "NECRASS_SIM",
+      "character": "necrass_sim",
+      "text": "Còn quý hơn.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 44,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "…",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 45,
+      "speaker": "NECRASS_SIM",
+      "character": "necrass_sim",
+      "text": "Sức sống còn sót lại của một sinh viên IT thiếu ngủ.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 46,
+      "speaker": null,
+      "character": "system_msg",
+      "text": "ENERGY SYSTEM UNLOCKED",
+      "kind": "sys"
+    },
+    {
+      "section": "1",
+      "index": 47,
+      "speaker": "NECRASS_SIM",
+      "character": "necrass_sim",
+      "text": "Mọi lựa chọn đều có giá của nó. Có lựa chọn khiến ngươi khỏe hơn. Có lựa chọn khiến ngươi mệt hơn.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 48,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Có lựa chọn nào cho nghỉ học không?",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 49,
+      "speaker": "NECRASS_SIM",
+      "character": "necrass_sim",
+      "text": "Có.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 50,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Thật á?",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 51,
+      "speaker": "NECRASS_SIM",
+      "character": "necrass_sim",
+      "text": "Nhưng game sẽ kết thúc ở Chapter 1.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 52,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Tác giả độc tài vậy?",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 53,
+      "speaker": "NECRASS_SIM",
+      "character": "necrass_sim",
+      "text": "Ta là vợ tác giả.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 54,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Ờ quên.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 55,
+      "speaker": "NECRASS_SIM",
+      "character": "necrass_sim",
+      "text": "Ngoài Energy, một số nhân vật sẽ ghi nhớ cách ngươi cư xử.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 56,
+      "speaker": null,
+      "character": "system_msg",
+      "text": "Một vài chỉ số quan hệ sẽ không được hiển thị trực tiếp.",
+      "kind": "sys"
+    },
+    {
+      "section": "1",
+      "index": 57,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Sao không hiện?",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 58,
+      "speaker": "NECRASS_SIM",
+      "character": "necrass_sim",
+      "text": "Để ngươi sống trong lo âu.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 59,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Game design đỉnh cao.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 60,
+      "speaker": "NECRASS_SIM",
+      "character": "necrass_sim",
+      "text": "Và giờ—",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 63,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "ỐI ZỜI ƠI!",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 65,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Mình vừa mơ cái quái gì vậy?!",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 67,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "6:29…",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 68,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Còn sớm.",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 70,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "…Hay ngủ thêm đúng năm phút?",
+      "kind": "say"
+    },
+    {
+      "section": "1",
+      "index": 71,
+      "speaker": null,
+      "character": "system_msg",
+      "text": "FIRST CHOICE",
+      "kind": "sys"
+    },
+    {
+      "section": "1",
+      "index": 73,
+      "text": "“Ngủ tiếp. Gặp lại nữ thần.”",
+      "kind": "choice"
+    },
+    {
+      "section": "1",
+      "index": 78,
+      "text": "“Dậy ngay. Không ngu nữa.”",
+      "kind": "choice"
+    },
+    {
+      "section": "2A",
+      "index": 1,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Tôi quay lại rồi.",
+      "kind": "say"
+    },
+    {
+      "section": "2A",
+      "index": 2,
+      "speaker": "NECRASS_SIM",
+      "character": "necrass_sim",
+      "text": "Ta biết.",
+      "kind": "say"
+    },
+    {
+      "section": "2A",
+      "index": 3,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Cho hỏi route romance của cô mở Chapter mấy?",
+      "kind": "say"
+    },
+    {
+      "section": "2A",
+      "index": 4,
+      "speaker": "NECRASS_SIM",
+      "character": "necrass_sim",
+      "text": "Không tồn tại.",
+      "kind": "say"
+    },
+    {
+      "section": "2A",
+      "index": 5,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Thế tôi ngủ tiếp làm gì?",
+      "kind": "say"
+    },
+    {
+      "section": "2A",
+      "index": 6,
+      "speaker": "NECRASS_SIM",
+      "character": "necrass_sim",
+      "text": "Đúng câu hỏi đấy.",
+      "kind": "say"
+    },
+    {
+      "section": "2A",
+      "index": 9,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "…6:52?!",
+      "kind": "say"
+    },
+    {
+      "section": "2A",
+      "index": 11,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "NĂM PHÚT CỦA AI ĐÂY?!",
+      "kind": "say"
+    },
+    {
+      "section": "2A",
+      "index": 12,
+      "speaker": null,
+      "character": "system_msg",
+      "text": "Late Pressure unlocked.",
+      "kind": "sys"
+    },
+    {
+      "section": "2B",
+      "index": 1,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Được rồi.",
+      "kind": "say"
+    },
+    {
+      "section": "2B",
+      "index": 2,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Dậy.",
+      "kind": "say"
+    },
+    {
+      "section": "2B",
+      "index": 4,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "…",
+      "kind": "say"
+    },
+    {
+      "section": "2B",
+      "index": 5,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Chân, hợp tác nào.",
+      "kind": "say"
+    },
+    {
+      "section": "2B",
+      "index": 7,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Tao đang nói với hai đứa mày đó.",
+      "kind": "say"
+    },
+    {
+      "section": "2B",
+      "index": 8,
+      "speaker": null,
+      "character": "system_msg",
+      "text": "Nhân vật chính đã chiến thắng Boss đầu tiên: Cái giường.",
+      "kind": "sys"
+    },
+    {
+      "section": "3",
+      "index": 3,
+      "text": "Ăn sáng tử tế.",
+      "kind": "choice"
+    },
+    {
+      "section": "3",
+      "index": 4,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "“Có thực mới vực được… qua tiết đầu.”",
+      "kind": "say"
+    },
+    {
+      "section": "3",
+      "index": 6,
+      "text": "Uống cà phê thay cơm.",
+      "kind": "choice"
+    },
+    {
+      "section": "3",
+      "index": 7,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "“Đây không phải dinh dưỡng. Đây là kỹ thuật hồi sinh.”",
+      "kind": "say"
+    },
+    {
+      "section": "3",
+      "index": 10,
+      "text": "Bỏ luôn, chạy đi học.",
+      "kind": "choice"
+    },
+    {
+      "section": "3",
+      "index": 11,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "“Ăn sáng là DLC.”",
+      "kind": "say"
+    },
+    {
+      "section": "3",
+      "index": 14,
+      "speaker": null,
+      "character": "system_msg",
+      "text": "Bạn đang trễ.",
+      "kind": "sys"
+    },
+    {
+      "section": "3",
+      "index": 16,
+      "text": "Chạy nước rút ra ngoài.",
+      "kind": "choice"
+    },
+    {
+      "section": "3",
+      "index": 18,
+      "text": "Chấp nhận số phận, đi bình thường.",
+      "kind": "choice"
+    },
+    {
+      "section": "4",
+      "index": 2,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Ồ.",
+      "kind": "say"
+    },
+    {
+      "section": "4",
+      "index": 3,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Gì?",
+      "kind": "say"
+    },
+    {
+      "section": "4",
+      "index": 4,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Mày còn sống.",
+      "kind": "say"
+    },
+    {
+      "section": "4",
+      "index": 5,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Sáng sớm nói câu nghe xúi quẫy vậy, cha nội?",
+      "kind": "say"
+    },
+    {
+      "section": "4",
+      "index": 6,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Thế tối qua ai bảo “ván này xong tao ngủ”?",
+      "kind": "say"
+    },
+    {
+      "section": "4",
+      "index": 7,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Tao.",
+      "kind": "say"
+    },
+    {
+      "section": "4",
+      "index": 8,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Ai bấm Ready tiếp?",
+      "kind": "say"
+    },
+    {
+      "section": "4",
+      "index": 9,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Cũng tao.",
+      "kind": "say"
+    },
+    {
+      "section": "4",
+      "index": 10,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Ai có tiết sáng?",
+      "kind": "say"
+    },
+    {
+      "section": "4",
+      "index": 11,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "…",
+      "kind": "say"
+    },
+    {
+      "section": "4",
+      "index": 12,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Tao thích cái cách mày tự xây boss fight cho chính mình.",
+      "kind": "say"
+    },
+    {
+      "section": "4",
+      "index": 14,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Mà khoan… giờ này mới tới?",
+      "kind": "say"
+    },
+    {
+      "section": "4",
+      "index": 15,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Tao đang áp dụng chiến thuật “xuất hiện đúng lúc giảng viên bắt đầu điểm danh”.",
+      "kind": "say"
+    },
+    {
+      "section": "4",
+      "index": 16,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Mày gọi đó là chiến thuật?",
+      "kind": "say"
+    },
+    {
+      "section": "4",
+      "index": 17,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Risk management.",
+      "kind": "say"
+    },
+    {
+      "section": "4",
+      "index": 18,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Mày học Game Dev chứ có học tài chính đâu cu ơi!",
+      "kind": "say"
+    },
+    {
+      "section": "4",
+      "index": 20,
+      "text": "“Mua tao chai nước đi, người anh em.”",
+      "kind": "choice"
+    },
+    {
+      "section": "4",
+      "index": 21,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "“Tự mua.”",
+      "kind": "say"
+    },
+    {
+      "section": "4",
+      "index": 22,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "“Tình bạn mỏng hơn ping Wi-Fi.”",
+      "kind": "say"
+    },
+    {
+      "section": "4",
+      "index": 24,
+      "text": "“Tối nay làm thêm vài ván?”",
+      "kind": "choice"
+    },
+    {
+      "section": "4",
+      "index": 25,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "“Mày chưa học được gì cả.”",
+      "kind": "say"
+    },
+    {
+      "section": "4",
+      "index": 27,
+      "text": "“Tối nay tao ngủ sớm.”",
+      "kind": "choice"
+    },
+    {
+      "section": "4",
+      "index": 28,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "“Tao sẽ ghi âm câu này lại và đóng nó cho viện bảo tàng Anh Quốc.”",
+      "kind": "say"
+    },
+    {
+      "section": "5",
+      "index": 2,
+      "speaker": "LINH",
+      "character": "l",
+      "text": "Hai ông đứng chắn giữa đường làm gì vậy?",
+      "kind": "say"
+    },
+    {
+      "section": "5",
+      "index": 3,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Tưởng niệm giấc ngủ của nó.",
+      "kind": "say"
+    },
+    {
+      "section": "5",
+      "index": 4,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Nó hy sinh lúc 2 giờ sáng.",
+      "kind": "say"
+    },
+    {
+      "section": "5",
+      "index": 5,
+      "speaker": "LINH",
+      "character": "l",
+      "text": "Lại chơi game?",
+      "kind": "say"
+    },
+    {
+      "section": "5",
+      "index": 6,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Nghiên cứu thực nghiệm.",
+      "kind": "say"
+    },
+    {
+      "section": "5",
+      "index": 7,
+      "speaker": "LINH",
+      "character": "l",
+      "text": "Game nào?",
+      "kind": "say"
+    },
+    {
+      "section": "5",
+      "index": 8,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "…",
+      "kind": "say"
+    },
+    {
+      "section": "5",
+      "index": 9,
+      "speaker": "LINH",
+      "character": "l",
+      "text": "Đấy. Biết ngay mà.",
+      "kind": "say"
+    },
+    {
+      "section": "5",
+      "index": 11,
+      "speaker": "LINH",
+      "character": "l",
+      "text": "Ông ổn không đấy? Nhìn như vừa respawn lỗi texture.",
+      "kind": "say"
+    },
+    {
+      "section": "5",
+      "index": 12,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Đây là vẻ đẹp tự nhiên của sinh viên gần năm cuối.",
+      "kind": "say"
+    },
+    {
+      "section": "5",
+      "index": 13,
+      "speaker": "LINH",
+      "character": "l",
+      "text": "Không. Đây definitely là thiếu ngủ.",
+      "kind": "say"
+    },
+    {
+      "section": "5",
+      "index": 15,
+      "text": "“Yên tâm, tôi khỏe.”",
+      "kind": "choice"
+    },
+    {
+      "section": "5",
+      "index": 16,
+      "speaker": "LINH",
+      "character": "l",
+      "text": "“Người sắp xỉu thường nói vậy.”",
+      "kind": "say"
+    },
+    {
+      "section": "5",
+      "index": 18,
+      "text": "“Có đồ ăn không?”",
+      "kind": "choice"
+    },
+    {
+      "section": "5",
+      "index": 19,
+      "speaker": "LINH",
+      "character": "l",
+      "text": "“Có sẵn thanh ngũ cốc nè. Xơi không?”",
+      "kind": "say"
+    },
+    {
+      "section": "5",
+      "index": 21,
+      "text": "“Nếu tôi ngã, nhớ save project trước.”",
+      "kind": "choice"
+    },
+    {
+      "section": "5",
+      "index": 22,
+      "speaker": "LINH",
+      "character": "l",
+      "text": "“Tôi save project. Ông tự save mình.”",
+      "kind": "say"
+    },
+    {
+      "section": "6",
+      "index": 3,
+      "speaker": "THẦY DEV",
+      "character": "dev",
+      "text": "Chào các em.",
+      "kind": "say"
+    },
+    {
+      "section": "6",
+      "index": 4,
+      "speaker": "CẢ LỚP",
+      "character": "crowd",
+      "text": "Dạ chào thầy.",
+      "kind": "say"
+    },
+    {
+      "section": "6",
+      "index": 5,
+      "speaker": "THẦY DEV",
+      "character": "dev",
+      "text": "Hôm nay chúng ta sẽ nói về kiến trúc hệ thống.",
+      "kind": "say"
+    },
+    {
+      "section": "6",
+      "index": 7,
+      "speaker": "MC (thought)",
+      "character": "mc_thought",
+      "text": "Được. Mình ổn. Chỉ cần tập trung.",
+      "kind": "say"
+    },
+    {
+      "section": "6",
+      "index": 8,
+      "speaker": "THẦY DEV",
+      "character": "dev",
+      "text": "Giả sử project của các em có tám scene, mười hai manager và ba script cùng tự nhận mình là GameManager—",
+      "kind": "say"
+    },
+    {
+      "section": "6",
+      "index": 9,
+      "speaker": "MC (thought)",
+      "character": "mc_thought",
+      "text": "Thầy đang công kích cá nhân mình à?",
+      "kind": "say"
+    },
+    {
+      "section": "6",
+      "index": 10,
+      "speaker": "MINH (whisper)",
+      "character": "minh_whisper",
+      "text": "Mặt mày tái mét thế kia.",
+      "kind": "say"
+    },
+    {
+      "section": "6",
+      "index": 11,
+      "speaker": "MC (whisper)",
+      "character": "mc_whisper",
+      "text": "Tao thấy quá khứ huy hoàng.",
+      "kind": "say"
+    },
+    {
+      "section": "6",
+      "index": 12,
+      "speaker": "THẦY DEV",
+      "character": "dev",
+      "text": "Và đặc biệt, đừng để toàn bộ logic chạy trong một file ba nghìn dòng.",
+      "kind": "say"
+    },
+    {
+      "section": "6",
+      "index": 14,
+      "speaker": "LINH (whisper)",
+      "character": "linh_whisper",
+      "text": "Trúng tim đen rồi à?",
+      "kind": "say"
+    },
+    {
+      "section": "6",
+      "index": 15,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Không.",
+      "kind": "say"
+    },
+    {
+      "section": "6",
+      "index": 16,
+      "speaker": "LINH",
+      "character": "l",
+      "text": "Ông vừa tắt màn hình laptop.",
+      "kind": "say"
+    },
+    {
+      "section": "6",
+      "index": 17,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Nó cần được yên nghỉ.",
+      "kind": "say"
+    },
+    {
+      "section": "6",
+      "index": 18,
+      "speaker": null,
+      "character": "system_msg",
+      "text": "TUTORIAL: ENERGY CHECKPOINT",
+      "kind": "sys"
+    },
+    {
+      "section": "6",
+      "index": 20,
+      "speaker": "MC (thought)",
+      "character": "mc_thought",
+      "text": "Mệt, nhưng vẫn xử lý được.",
+      "kind": "say"
+    },
+    {
+      "section": "6",
+      "index": 22,
+      "speaker": "MC (thought)",
+      "character": "mc_thought",
+      "text": "Não đang chạy 30 FPS.",
+      "kind": "say"
+    },
+    {
+      "section": "6",
+      "index": 25,
+      "speaker": "MC (thought)",
+      "character": "mc_thought",
+      "text": "Tại sao cái Singleton Pattern đang… trôi?",
+      "kind": "say"
+    },
+    {
+      "section": "7",
+      "index": 0,
+      "speaker": "THẦY DEV",
+      "character": "dev",
+      "text": "Các em có mười phút. Nhìn đoạn code này và chỉ ra vấn đề.",
+      "kind": "say"
+    },
+    {
+      "section": "7",
+      "index": 2,
+      "text": "Tự làm nghiêm túc.",
+      "kind": "choice"
+    },
+    {
+      "section": "7",
+      "index": 5,
+      "text": "Trao đổi với Minh.",
+      "kind": "choice"
+    },
+    {
+      "section": "7",
+      "index": 7,
+      "text": "Nhìn sang Linh với ánh mắt cầu cứu.",
+      "kind": "choice"
+    },
+    {
+      "section": "7",
+      "index": 8,
+      "speaker": "LINH",
+      "character": "l",
+      "text": "“Đọc đi. Tôi gợi ý chứ không làm hộ đâu.”",
+      "kind": "say"
+    },
+    {
+      "section": "7",
+      "index": 10,
+      "text": "Gục mặt 10 giây để “tối ưu CPU”.",
+      "kind": "choice"
+    },
+    {
+      "section": "7",
+      "index": 14,
+      "speaker": "THẦY DEV",
+      "character": "dev",
+      "text": "Em kia.",
+      "kind": "say"
+    },
+    {
+      "section": "7",
+      "index": 16,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Dạ em đang suy nghĩ.",
+      "kind": "say"
+    },
+    {
+      "section": "7",
+      "index": 17,
+      "speaker": "THẦY DEV",
+      "character": "dev",
+      "text": "Bằng mí mắt à?",
+      "kind": "say"
+    },
+    {
+      "section": "7",
+      "index": 18,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Dạ… phương pháp mới.",
+      "kind": "say"
+    },
+    {
+      "section": "7",
+      "index": 19,
+      "speaker": "THẦY DEV",
+      "character": "dev",
+      "text": "Thế kết quả thì sao?",
+      "kind": "say"
+    },
+    {
+      "section": "7",
+      "index": 20,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Code có vấn đề ạ.",
+      "kind": "say"
+    },
+    {
+      "section": "7",
+      "index": 21,
+      "speaker": "THẦY DEV",
+      "character": "dev",
+      "text": "Thầy cũng có thể nhìn ra điều đó và cả em ở trỏng.",
+      "kind": "say"
+    },
+    {
+      "section": "8",
+      "index": 2,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Ngân kìa.",
+      "kind": "say"
+    },
+    {
+      "section": "8",
+      "index": 3,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Ừ.",
+      "kind": "say"
+    },
+    {
+      "section": "8",
+      "index": 4,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Ừ là sao?",
+      "kind": "say"
+    },
+    {
+      "section": "8",
+      "index": 5,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Thì… Ngân kìa.",
+      "kind": "say"
+    },
+    {
+      "section": "8",
+      "index": 6,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Khả năng quan sát tuyệt vời.",
+      "kind": "say"
+    },
+    {
+      "section": "8",
+      "index": 8,
+      "speaker": "NGÂN",
+      "character": "ngan",
+      "text": "Hai người nói nhỏ mà đứng cách tôi hai mét thì vẫn nghe được nhé.",
+      "kind": "say"
+    },
+    {
+      "section": "8",
+      "index": 9,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Chào.",
+      "kind": "say"
+    },
+    {
+      "section": "8",
+      "index": 10,
+      "speaker": "NGÂN",
+      "character": "ngan",
+      "text": "Chào.",
+      "kind": "say"
+    },
+    {
+      "section": "8",
+      "index": 11,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Nó hôm nay mới ngủ bốn tiếng.",
+      "kind": "say"
+    },
+    {
+      "section": "8",
+      "index": 12,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Mày bán thông tin cá nhân nhanh vậy?",
+      "kind": "say"
+    },
+    {
+      "section": "8",
+      "index": 13,
+      "speaker": "NGÂN",
+      "character": "ngan",
+      "text": "Nhìn mặt là biết gồi.",
+      "kind": "say"
+    },
+    {
+      "section": "8",
+      "index": 14,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Sao sáng giờ ai cũng nói câu này vậy?",
+      "kind": "say"
+    },
+    {
+      "section": "8",
+      "index": 15,
+      "speaker": "NGÂN",
+      "character": "ngan",
+      "text": "Vì mặt ông đang tự viết status.",
+      "kind": "say"
+    },
+    {
+      "section": "8",
+      "index": 17,
+      "text": "“Status gì?”",
+      "kind": "choice"
+    },
+    {
+      "section": "8",
+      "index": 18,
+      "speaker": "NGÂN",
+      "character": "ngan",
+      "text": "“Last seen alive: yesterday.”",
+      "kind": "say"
+    },
+    {
+      "section": "8",
+      "index": 20,
+      "text": "“Tôi vẫn đẹp trai mà.”",
+      "kind": "choice"
+    },
+    {
+      "section": "8",
+      "index": 21,
+      "speaker": "NGÂN",
+      "character": "ngan",
+      "text": "“Cái đó tôi không phụ trách xác minh.”",
+      "kind": "say"
+    },
+    {
+      "section": "8",
+      "index": 23,
+      "text": "“Cho tôi dựa bàn ngủ 5 phút.”",
+      "kind": "choice"
+    },
+    {
+      "section": "8",
+      "index": 24,
+      "speaker": "NGÂN",
+      "character": "ngan",
+      "text": "“Năm phút của ông có lịch sử không đáng tin lắm.”",
+      "kind": "say"
+    },
+    {
+      "section": "8",
+      "index": 26,
+      "text": "“Tôi đi mua nước. Ai uống gì không?”",
+      "kind": "choice"
+    },
+    {
+      "section": "8",
+      "index": 29,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Tao—",
+      "kind": "say"
+    },
+    {
+      "section": "8",
+      "index": 30,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Mày tự mua.",
+      "kind": "say"
+    },
+    {
+      "section": "8",
+      "index": 31,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Tình bạn mỏng hơn ping Wi-Fi.",
+      "kind": "say"
+    },
+    {
+      "section": "8",
+      "index": 32,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Đừng ăn cắp thoại của tao.",
+      "kind": "say"
+    },
+    {
+      "section": "9",
+      "index": 3,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Khoan…",
+      "kind": "say"
+    },
+    {
+      "section": "9",
+      "index": 4,
+      "speaker": "LINH",
+      "character": "l",
+      "text": "Ông sao vậy?",
+      "kind": "say"
+    },
+    {
+      "section": "9",
+      "index": 5,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Hình như mặt đất muốn hôn tôi…",
+      "kind": "say"
+    },
+    {
+      "section": "9",
+      "index": 7,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "…đang update physics.",
+      "kind": "say"
+    },
+    {
+      "section": "9",
+      "index": 8,
+      "speaker": "NGÂN",
+      "character": "ngan",
+      "text": "Này—",
+      "kind": "say"
+    },
+    {
+      "section": "9",
+      "index": 10,
+      "speaker": null,
+      "character": "system_msg",
+      "text": "ROUTE OVERRIDE",
+      "kind": "sys"
+    },
+    {
+      "section": "10",
+      "index": 1,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Ăn gì?",
+      "kind": "say"
+    },
+    {
+      "section": "10",
+      "index": 2,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Thứ gì hồi Energy nhiều nhất.",
+      "kind": "say"
+    },
+    {
+      "section": "10",
+      "index": 3,
+      "speaker": "LINH",
+      "character": "l",
+      "text": "Ông nói như đang đang chơi game vậy.",
+      "kind": "say"
+    },
+    {
+      "section": "10",
+      "index": 4,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Cuộc đời sẽ dễ hơn nếu đồ ăn có stat.",
+      "kind": "say"
+    },
+    {
+      "section": "10",
+      "index": 5,
+      "speaker": "NGÂN",
+      "character": "ngan",
+      "text": "Cơm: +20 Energy. Trà sữa: +5 morale, -30 nghìn.",
+      "kind": "say"
+    },
+    {
+      "section": "10",
+      "index": 6,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Mì cay: +10 Energy, +50 regret.",
+      "kind": "say"
+    },
+    {
+      "section": "10",
+      "index": 7,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Đấy. Thiết kế hệ thống hoàn chỉnh rồi còn gì.",
+      "kind": "say"
+    },
+    {
+      "section": "10",
+      "index": 9,
+      "text": "Ăn một bữa tử tế.",
+      "kind": "choice"
+    },
+    {
+      "section": "10",
+      "index": 11,
+      "text": "Ăn nhẹ cho nhanh.",
+      "kind": "choice"
+    },
+    {
+      "section": "10",
+      "index": 13,
+      "text": "Bỏ bữa để làm task.",
+      "kind": "choice"
+    },
+    {
+      "section": "10",
+      "index": 15,
+      "text": "Cà phê lần hai.",
+      "kind": "choice"
+    },
+    {
+      "section": "10",
+      "index": 18,
+      "speaker": "LINH",
+      "character": "l",
+      "text": "Ông không ăn thật à?",
+      "kind": "say"
+    },
+    {
+      "section": "10",
+      "index": 19,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Deadline không chờ ai.",
+      "kind": "say"
+    },
+    {
+      "section": "10",
+      "index": 20,
+      "speaker": "LINH",
+      "character": "l",
+      "text": "Dạ dày cũng không.",
+      "kind": "say"
+    },
+    {
+      "section": "10",
+      "index": 21,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Hai tiếng nữa cái dạ dày của nó gửi notification. Đợi thêm xíu tao nghi thằng hôn mặt đất quá bây ạ...",
+      "kind": "say"
+    },
+    {
+      "section": "11",
+      "index": 1,
+      "speaker": "NARRATOR",
+      "character": "n",
+      "text": "Buổi chiều trôi qua theo cách rất sinh viên.",
+      "kind": "say"
+    },
+    {
+      "section": "11",
+      "index": 11,
+      "speaker": "MC (thought)",
+      "character": "mc_thought",
+      "text": "Tim mình đang chạy ở 144Hz.",
+      "kind": "say"
+    },
+    {
+      "section": "11",
+      "index": 13,
+      "speaker": "MC (thought)",
+      "character": "mc_thought",
+      "text": "Mình có thể nghe thấy tiếng xung quanh… bằng tâm hồn.\nMình đạt tới... đỉnh cao loài người rồi sao?",
+      "kind": "say"
+    },
+    {
+      "section": "12",
+      "index": 2,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Cuối cùng.",
+      "kind": "say"
+    },
+    {
+      "section": "12",
+      "index": 3,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Về à?",
+      "kind": "say"
+    },
+    {
+      "section": "12",
+      "index": 4,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Về chớ.",
+      "kind": "say"
+    },
+    {
+      "section": "12",
+      "index": 5,
+      "speaker": "LINH",
+      "character": "l",
+      "text": "Không ghé đâu nữa nhé.",
+      "kind": "say"
+    },
+    {
+      "section": "12",
+      "index": 6,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Chắc chắn rồi.",
+      "kind": "say"
+    },
+    {
+      "section": "12",
+      "index": 7,
+      "speaker": "NGÂN",
+      "character": "ngan",
+      "text": "Ông nói nghe đáng ngờ quá.",
+      "kind": "say"
+    },
+    {
+      "section": "12",
+      "index": 9,
+      "speaker": "??? (off-screen)",
+      "character": "pe_offscreen",
+      "text": "EM KIA!",
+      "kind": "say"
+    },
+    {
+      "section": "12",
+      "index": 11,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Tại sao mỗi lần ai đó nói “em kia” tôi đều cảm thấy đó là mình?",
+      "kind": "say"
+    },
+    {
+      "section": "12",
+      "index": 13,
+      "speaker": "NARRATOR",
+      "character": "n",
+      "text": "Và rồi anh ta xuất hiện.",
+      "kind": "say"
+    },
+    {
+      "section": "12",
+      "index": 14,
+      "speaker": "NARRATOR",
+      "character": "n",
+      "text": "Người đàn ông.",
+      "kind": "say"
+    },
+    {
+      "section": "12",
+      "index": 15,
+      "speaker": "NARRATOR",
+      "character": "n",
+      "text": "Huyền thoại.",
+      "kind": "say"
+    },
+    {
+      "section": "12",
+      "index": 16,
+      "speaker": "NARRATOR",
+      "character": "n",
+      "text": "Khối hợp kim đen bóng biết đi.",
+      "kind": "say"
+    },
+    {
+      "section": "12",
+      "index": 17,
+      "speaker": "THẦY THỂ DỤC",
+      "character": "pe",
+      "text": "Em!",
+      "kind": "say"
+    },
+    {
+      "section": "12",
+      "index": 18,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Dạ…",
+      "kind": "say"
+    },
+    {
+      "section": "12",
+      "index": 19,
+      "speaker": "THẦY THỂ DỤC",
+      "character": "pe",
+      "text": "Có chơi thể thao không?",
+      "kind": "say"
+    },
+    {
+      "section": "12",
+      "index": 21,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Đừng nhìn tao.",
+      "kind": "say"
+    },
+    {
+      "section": "12",
+      "index": 22,
+      "speaker": "LINH",
+      "character": "l",
+      "text": "Tự cứu mình đi.",
+      "kind": "say"
+    },
+    {
+      "section": "12",
+      "index": 23,
+      "speaker": "NGÂN",
+      "character": "ngan",
+      "text": "Chúc may mắn.",
+      "kind": "say"
+    },
+    {
+      "section": "12",
+      "index": 24,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Phản bội tập thể nhanh vậy?!",
+      "kind": "say"
+    },
+    {
+      "section": "13",
+      "index": 1,
+      "text": "“Dạ em không chơi môn nào hết.”",
+      "kind": "choice"
+    },
+    {
+      "section": "13",
+      "index": 6,
+      "speaker": "THẦY THỂ DỤC",
+      "character": "pe",
+      "text": "Không chơi càng tốt.",
+      "kind": "say"
+    },
+    {
+      "section": "13",
+      "index": 7,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "…Dạ?",
+      "kind": "say"
+    },
+    {
+      "section": "13",
+      "index": 8,
+      "speaker": "THẦY THỂ DỤC",
+      "character": "pe",
+      "text": "Thầy đang tuyển người mới.",
+      "kind": "say"
+    },
+    {
+      "section": "13",
+      "index": 9,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Logic gì vậy thầy?",
+      "kind": "say"
+    },
+    {
+      "section": "13",
+      "index": 10,
+      "speaker": "THẦY THỂ DỤC",
+      "character": "pe",
+      "text": "Người chưa biết thì dễ đào tạo.",
+      "kind": "say"
+    },
+    {
+      "section": "13",
+      "index": 2,
+      "text": "“Dạ em còn deadline.”",
+      "kind": "choice"
+    },
+    {
+      "section": "13",
+      "index": 13,
+      "speaker": "THẦY THỂ DỤC",
+      "character": "pe",
+      "text": "Deadline càng cần vận động.",
+      "kind": "say"
+    },
+    {
+      "section": "13",
+      "index": 14,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Em tưởng deadline cần làm bài.",
+      "kind": "say"
+    },
+    {
+      "section": "13",
+      "index": 15,
+      "speaker": "THẦY THỂ DỤC",
+      "character": "pe",
+      "text": "Thân khỏe thì code mới khỏe.",
+      "kind": "say"
+    },
+    {
+      "section": "13",
+      "index": 16,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Code em compile bằng CPU chứ đâu bằng cơ ngực—",
+      "kind": "say"
+    },
+    {
+      "section": "13",
+      "index": 18,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Nó mệt nên nói nhảm đó thầy.",
+      "kind": "say"
+    },
+    {
+      "section": "13",
+      "index": 3,
+      "text": "“Dạ em rất thích thể thao ạ.”",
+      "kind": "choice"
+    },
+    {
+      "section": "13",
+      "index": 21,
+      "speaker": "THẦY THỂ DỤC",
+      "character": "pe",
+      "text": "Tốt!",
+      "kind": "say"
+    },
+    {
+      "section": "13",
+      "index": 23,
+      "speaker": "THẦY THỂ DỤC",
+      "character": "pe",
+      "text": "Vậy mai 5 giờ chiều ra sân.",
+      "kind": "say"
+    },
+    {
+      "section": "13",
+      "index": 24,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Khoan—",
+      "kind": "say"
+    },
+    {
+      "section": "13",
+      "index": 4,
+      "text": "Giả vờ nhận điện thoại rồi lùi dần.",
+      "kind": "choice"
+    },
+    {
+      "section": "13",
+      "index": 28,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Dạ alo? Cháy server hả? Tôi biết rồi, tới liền ngay!",
+      "kind": "say"
+    },
+    {
+      "section": "13",
+      "index": 29,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "…",
+      "kind": "say"
+    },
+    {
+      "section": "13",
+      "index": 30,
+      "speaker": "LINH",
+      "character": "l",
+      "text": "…",
+      "kind": "say"
+    },
+    {
+      "section": "13",
+      "index": 31,
+      "speaker": "NGÂN",
+      "character": "ngan",
+      "text": "…",
+      "kind": "say"
+    },
+    {
+      "section": "13",
+      "index": 32,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Dạ em tới ngay!",
+      "kind": "say"
+    },
+    {
+      "section": "13",
+      "index": 34,
+      "speaker": "THẦY THỂ DỤC",
+      "character": "pe",
+      "text": "Điện thoại em đang ở màn hình khóa.",
+      "kind": "say"
+    },
+    {
+      "section": "13",
+      "index": 36,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Server gọi bằng thần giao cách cảm ạ.",
+      "kind": "say"
+    },
+    {
+      "section": "14",
+      "index": 2,
+      "speaker": "THẦY THỂ DỤC",
+      "character": "pe",
+      "text": "Thầy thích tinh thần của em.",
+      "kind": "say"
+    },
+    {
+      "section": "14",
+      "index": 3,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Em có tinh thần gì đâu thầy?",
+      "kind": "say"
+    },
+    {
+      "section": "14",
+      "index": 4,
+      "speaker": "THẦY THỂ DỤC",
+      "character": "pe",
+      "text": "Tinh thần cần được rèn luyện.",
+      "kind": "say"
+    },
+    {
+      "section": "14",
+      "index": 5,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Khoan, câu đó—",
+      "kind": "say"
+    },
+    {
+      "section": "14",
+      "index": 7,
+      "speaker": null,
+      "character": "system_msg",
+      "text": "FINAL RESISTANCE CHOICE",
+      "kind": "sys"
+    },
+    {
+      "section": "14",
+      "index": 9,
+      "text": "Ký vì não đã hết pin.",
+      "kind": "choice"
+    },
+    {
+      "section": "14",
+      "index": 11,
+      "text": "Từ chối lịch sự lần cuối.",
+      "kind": "choice"
+    },
+    {
+      "section": "14",
+      "index": 16,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Dạ em cảm ơn thầy, nhưng lịch học và project của em hiện tại không cho phép. Khi nào ổn hơn em sẽ chủ động đăng ký sau ạ.",
+      "kind": "say"
+    },
+    {
+      "section": "14",
+      "index": 18,
+      "speaker": "THẦY THỂ DỤC",
+      "character": "pe",
+      "text": "Ừ. Được. Thầy sẽ always welcome em nếu em có thể.",
+      "kind": "say"
+    },
+    {
+      "section": "14",
+      "index": 21,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Ủa.",
+      "kind": "say"
+    },
+    {
+      "section": "14",
+      "index": 22,
+      "speaker": "LINH",
+      "character": "l",
+      "text": "Ông vừa nói chuyện như người trưởng thành.",
+      "kind": "say"
+    },
+    {
+      "section": "14",
+      "index": 23,
+      "speaker": "NGÂN",
+      "character": "ngan",
+      "text": "Ghi lại ngày này đi.",
+      "kind": "say"
+    },
+    {
+      "section": "14",
+      "index": 24,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "OMFG...\nOk, tao sẽ ghi lại và gửi cho viện bảo tàng Anh Quốc.",
+      "kind": "say"
+    },
+    {
+      "section": "14",
+      "index": 26,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Dạ… em cảm ơn thầy… hiện tại lịch em…",
+      "kind": "say"
+    },
+    {
+      "section": "14",
+      "index": 28,
+      "speaker": "THẦY THỂ DỤC",
+      "character": "pe",
+      "text": "Lịch em sao?",
+      "kind": "say"
+    },
+    {
+      "section": "14",
+      "index": 29,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "…trống.",
+      "kind": "say"
+    },
+    {
+      "section": "14",
+      "index": 30,
+      "speaker": "MC (thought)",
+      "character": "mc_thought",
+      "text": "KHÔNG! NÃO ƠI! TAO LẠY MÀY NÃO ƠI!",
+      "kind": "say"
+    },
+    {
+      "section": "14",
+      "index": 31,
+      "speaker": "THẦY THỂ DỤC",
+      "character": "pe",
+      "text": "Tuyệt vời.",
+      "kind": "say"
+    },
+    {
+      "section": "15",
+      "index": 2,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Tối nay game không?",
+      "kind": "say"
+    },
+    {
+      "section": "15",
+      "index": 3,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Không.",
+      "kind": "say"
+    },
+    {
+      "section": "15",
+      "index": 4,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Tao chưa nói game gì.",
+      "kind": "say"
+    },
+    {
+      "section": "15",
+      "index": 5,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Không.",
+      "kind": "say"
+    },
+    {
+      "section": "15",
+      "index": 6,
+      "speaker": "LINH",
+      "character": "l",
+      "text": "Giỏi, có tiến bộ rồi đấy.",
+      "kind": "say"
+    },
+    {
+      "section": "15",
+      "index": 7,
+      "speaker": "NGÂN",
+      "character": "ngan",
+      "text": "Tao công nhận điều đó Linh ạ, ngày nay thằng này bị ai nhập à?\nNói chứ bye mai gặp nha, bạn hiền~",
+      "kind": "say"
+    },
+    {
+      "section": "15",
+      "index": 8,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Bye anh em, mai gặp.",
+      "kind": "say"
+    },
+    {
+      "section": "15",
+      "index": 10,
+      "speaker": null,
+      "character": "system_msg",
+      "text": "FINAL ENERGY CHECK",
+      "kind": "sys"
+    },
+    {
+      "section": "GOOD ROUTE",
+      "index": 2,
+      "speaker": "NARRATOR",
+      "character": "n",
+      "text": "Không bị kéo vào câu lạc bộ.",
+      "kind": "say"
+    },
+    {
+      "section": "GOOD ROUTE",
+      "index": 3,
+      "speaker": "NARRATOR",
+      "character": "n",
+      "text": "Không gục giữa sân trường.",
+      "kind": "say"
+    },
+    {
+      "section": "GOOD ROUTE",
+      "index": 4,
+      "speaker": "NARRATOR",
+      "character": "n",
+      "text": "Không phải tỉnh dậy dưới ánh đèn phòng y tế.",
+      "kind": "say"
+    },
+    {
+      "section": "GOOD ROUTE",
+      "index": 5,
+      "speaker": "NARRATOR",
+      "character": "n",
+      "text": "Theo tiêu chuẩn sinh viên IT…",
+      "kind": "say"
+    },
+    {
+      "section": "GOOD ROUTE",
+      "index": 6,
+      "speaker": "NARRATOR",
+      "character": "n",
+      "text": "…đây là một ngày thành công ngoài mong đợi.",
+      "kind": "say"
+    },
+    {
+      "section": "GOOD ROUTE",
+      "index": 9,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Mệt.",
+      "kind": "say"
+    },
+    {
+      "section": "GOOD ROUTE",
+      "index": 13,
+      "speaker": "MINH (message)",
+      "character": "minh_message",
+      "text": "“Vui vẻ 1 xíu chứ :>>>>>>>?”",
+      "kind": "say"
+    },
+    {
+      "section": "GOOD ROUTE",
+      "index": 15,
+      "text": "Tắt Discord.",
+      "kind": "choice"
+    },
+    {
+      "section": "GOOD ROUTE",
+      "index": 19,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Không thể phạm cùng một sai lầm hai ngày liên tiếp.",
+      "kind": "say"
+    },
+    {
+      "section": "GOOD ROUTE",
+      "index": 21,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "…chắc vậy.",
+      "kind": "say"
+    },
+    {
+      "section": "GOOD ROUTE",
+      "index": 16,
+      "text": "Nhìn tin nhắn 10 giây.",
+      "kind": "choice"
+    },
+    {
+      "section": "GOOD ROUTE",
+      "index": 23,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Đừng dụ tao.",
+      "kind": "say"
+    },
+    {
+      "section": "GOOD ROUTE",
+      "index": 17,
+      "text": "Gõ “không” rồi xóa.",
+      "kind": "choice"
+    },
+    {
+      "section": "GOOD ROUTE",
+      "index": 28,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Đấy. Character development áp dụng trong 1 ngày.",
+      "kind": "say"
+    },
+    {
+      "section": "GOOD ROUTE",
+      "index": 30,
+      "speaker": "Necrass",
+      "character": "necrass",
+      "text": "Thế là ta có thể tin tưởng cậu và hành trình sắp tới của cậu được rồi. Chàng trai trẻ!",
+      "kind": "say"
+    },
+    {
+      "section": "GOOD ROUTE",
+      "index": 31,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Á đu- lại là cô nữa á? Lần này là gì nữa đây?",
+      "kind": "say"
+    },
+    {
+      "section": "GOOD ROUTE",
+      "index": 32,
+      "speaker": "Necrass",
+      "character": "necrass",
+      "text": "\"Cậu đã làm rất tốt, hành trình sau này của cậu còn đầy giang nan và khổ cực\nTa mong rằng cậu vẫn có thể giữ vững tinh thần và ý chí này\"\nĐó là lời của chồng ta nói vậy với cậu\nChứ không thì cậu vào bộ sưu tập thú vị của ta cùng mấy thằng đệ dưới trướng ta rồi.",
+      "kind": "say"
+    },
+    {
+      "section": "GOOD ROUTE",
+      "index": 33,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "......",
+      "kind": "say"
+    },
+    {
+      "section": "GOOD ROUTE",
+      "index": 34,
+      "speaker": "Necrass",
+      "character": "necrass",
+      "text": "Ta không còn gì để hướng dẫn hay nói thêm với cậu\nHành trình sau này sẽ do cậu, cứ từ từ mà tận hưởng~~~",
+      "kind": "say"
+    },
+    {
+      "section": "GOOD ROUTE",
+      "index": 35,
+      "speaker": "Narrator",
+      "character": "n",
+      "text": "Nhân vật kia biến mất trong giấc mơ của nhân vật chính chúng ta và\nthật bất ngờ là thằng nhân vật chính của chúng ta bị ai đó cho u sọ não\nNên sáng hôm sau nó gần như quên hết về nữ thần trong mơ gì đó của nó :>>>>>>",
+      "kind": "say"
+    },
+    {
+      "section": "GOOD ROUTE",
+      "index": 36,
+      "speaker": null,
+      "character": "system_msg",
+      "text": "CHAPTER 1 COMPLETE\nGOOD ROUTE: HOME SAFE",
+      "kind": "sys"
+    },
+    {
+      "section": "GOOD ROUTE",
+      "index": 37,
+      "speaker": "NARRATOR",
+      "character": "n",
+      "text": "Ngày đầu tiên kết thúc.\nKhông có gì đặc biệt xảy ra.",
+      "kind": "say"
+    },
+    {
+      "section": "GOOD ROUTE",
+      "index": 39,
+      "speaker": "NARRATOR",
+      "character": "n",
+      "text": "Tạm thời.",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE A",
+      "index": 3,
+      "speaker": "THẦY THỂ DỤC",
+      "character": "pe",
+      "text": "Tốt! Mai 5 giờ chiều nhé em trai.",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE A",
+      "index": 4,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Thầy ơi em chưa—",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE A",
+      "index": 5,
+      "speaker": "THẦY THỂ DỤC",
+      "character": "pe",
+      "text": "Thầy tin em.",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE A",
+      "index": 6,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Nhưng em không tin em!",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE A",
+      "index": 10,
+      "speaker": "MINH",
+      "character": "m",
+      "text": "Xin chia buồn.",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE A",
+      "index": 11,
+      "speaker": "LINH",
+      "character": "l",
+      "text": "Ông ổn không?",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE A",
+      "index": 12,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Không.",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE A",
+      "index": 13,
+      "speaker": "NGÂN",
+      "character": "ngan",
+      "text": "Nhìn mặt là biết.",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE A",
+      "index": 14,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Tôi vừa mất quyền tự quyết của đời mình.",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE A",
+      "index": 17,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Mình đi học Game Dev.",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE A",
+      "index": 18,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Tại sao ngày đầu game lại unlock Fitness DLC?",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE A",
+      "index": 20,
+      "speaker": "THẦY THỂ DỤC (message)",
+      "character": "pe_message",
+      "text": "“Mai nhớ mang đồ thể thao em nhé 💪”",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE A",
+      "index": 22,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Hết.",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE A",
+      "index": 23,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Hết chuyện tình thời sinh viên.",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE A",
+      "index": 24,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Ngày mai tôi kết hôn với cơ bắp.",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE A",
+      "index": 25,
+      "speaker": null,
+      "character": "system_msg",
+      "text": "CHAPTER 1 COMPLETE\nBAD ROUTE: BLACK ALLOY CLUB",
+      "kind": "sys"
+    },
+    {
+      "section": "BAD ROUTE A",
+      "index": 26,
+      "speaker": "SYSTEM NOTE",
+      "character": "system_note",
+      "text": "Bạn đã bị một khối hợp kim đen bóng tuyển dụng thành công.",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE B",
+      "index": 3,
+      "speaker": "MC (thought)",
+      "character": "mc_thought",
+      "text": "Chỉ cần về tới nhà.",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE B",
+      "index": 4,
+      "speaker": "MC (thought)",
+      "character": "mc_thought",
+      "text": "Giường.",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE B",
+      "index": 5,
+      "speaker": "MC (thought)",
+      "character": "mc_thought",
+      "text": "Mình cần giường.",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE B",
+      "index": 7,
+      "speaker": "MINH (message)",
+      "character": "minh_message",
+      "text": "“Về chưa?”",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE B",
+      "index": 9,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Tao đang… loading.",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE B",
+      "index": 15,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Mai…",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE B",
+      "index": 17,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "…nghỉ game…",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE B",
+      "index": 19,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "…chắc vậy…",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE B",
+      "index": 21,
+      "speaker": "NARRATOR",
+      "character": "n",
+      "text": "Bạn không bị ngất ở trường.",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE B",
+      "index": 22,
+      "speaker": "NARRATOR",
+      "character": "n",
+      "text": "Bạn không gặp cô y tá.",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE B",
+      "index": 23,
+      "speaker": "NARRATOR",
+      "character": "n",
+      "text": "Bạn cũng không bị bắt vào CLB.",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE B",
+      "index": 24,
+      "speaker": "NARRATOR",
+      "character": "n",
+      "text": "Nhưng cơ thể bạn đã chính thức gửi đơn đình công.",
+      "kind": "say"
+    },
+    {
+      "section": "BAD ROUTE B",
+      "index": 25,
+      "speaker": null,
+      "character": "system_msg",
+      "text": "CHAPTER 1 COMPLETE\nBAD ROUTE: WALKING CORPSE",
+      "kind": "sys"
+    },
+    {
+      "section": "BAD ROUTE B",
+      "index": 26,
+      "speaker": "SYSTEM NOTE",
+      "character": "system_note",
+      "text": "Về được tới nhà với 1% pin vẫn là về được tới nhà.\nNhưng game không tính đó là chiến thắng.",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 3,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "…",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 4,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Mình chết rồi à?",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 5,
+      "speaker": "GIỌNG NỮ",
+      "character": "nurse_voice",
+      "text": "Nếu chết rồi thì em đang nói hơi nhiều đấy.",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 9,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "À.",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 10,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Respawn point.",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 11,
+      "speaker": "CÔ Y TÁ",
+      "character": "nurse",
+      "text": "Phòng y tế.",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 12,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Gần giống nhau ạ.",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 13,
+      "speaker": "CÔ Y TÁ",
+      "character": "nurse",
+      "text": "Hôm qua em ngủ bao nhiêu tiếng?",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 14,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Câu này có ảnh hưởng điểm không ạ?",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 15,
+      "speaker": "CÔ Y TÁ",
+      "character": "nurse",
+      "text": "Không. Mày nhảm rồi đó :>>>",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 16,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Khoảng… bốn.",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 18,
+      "speaker": "CÔ Y TÁ",
+      "character": "nurse",
+      "text": "Ăn sáng?",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 21,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Có ạ.",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 22,
+      "speaker": "CÔ Y TÁ",
+      "character": "nurse",
+      "text": "Ít nhất còn cứu được một điểm.",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 24,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Em uống cà phê.",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 25,
+      "speaker": "CÔ Y TÁ",
+      "character": "nurse",
+      "text": "Cô hỏi ăn sáng.",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 26,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Cà phê là súp nâu nấu từ hạt.",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 28,
+      "speaker": "CÔ Y TÁ",
+      "character": "nurse",
+      "text": "Không.",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 30,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "…",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 31,
+      "speaker": "CÔ Y TÁ",
+      "character": "nurse",
+      "text": "Không ăn đúng không?",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 32,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Cô đọc suy nghĩ em à?",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 33,
+      "speaker": "CÔ Y TÁ",
+      "character": "nurse",
+      "text": "Chuyện thường ở huyện.",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 35,
+      "speaker": "CÔ Y TÁ",
+      "character": "nurse",
+      "text": "Uống đi. Nằm nghỉ thêm. Hôm nay đừng chạy đi đâu nữa.",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 36,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Em còn—",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 37,
+      "speaker": "CÔ Y TÁ",
+      "character": "nurse",
+      "text": "Không.",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 38,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Nhưng—",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 39,
+      "speaker": "CÔ Y TÁ",
+      "character": "nurse",
+      "text": "Không nhưng nhị.",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 40,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Em chưa nói gì mà.",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 41,
+      "speaker": "CÔ Y TÁ",
+      "character": "nurse",
+      "text": "Cô biết em định nói gì.",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 42,
+      "speaker": null,
+      "character": "system_msg",
+      "text": "ALL ACTIVE ROUTES FOR TODAY HAVE BEEN SUSPENDED.",
+      "kind": "sys"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 43,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Ủa?",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 44,
+      "speaker": "CÔ Y TÁ",
+      "character": "nurse",
+      "text": "Sao?",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 45,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Không có gì. Em vừa cảm giác tương lai mình bị khóa.",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 47,
+      "speaker": "CÔ Y TÁ",
+      "character": "nurse",
+      "text": "Ngủ tiếp đi. Chưa nặng tới vậy đâu, bị mỗi tội thức quá nên nói xàm nhiều.",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 48,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Dạ.",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 51,
+      "speaker": "CÔ Y TÁ",
+      "character": "nurse",
+      "text": "Đỡ chưa?",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 52,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Đỡ rồi ạ.",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 53,
+      "speaker": "CÔ Y TÁ",
+      "character": "nurse",
+      "text": "Lần sau ngủ đủ, ăn đủ, uống nước đủ và bớt cái súp nâu đen trong ly dùm cô.",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 54,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Dạ.",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 55,
+      "speaker": "CÔ Y TÁ",
+      "character": "nurse",
+      "text": "Và đừng xem cơ thể mình như thanh stamina trong game. Đời không phải game nhá!",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 57,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "…",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 58,
+      "speaker": "CÔ Y TÁ",
+      "character": "nurse",
+      "text": "Sao?",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 59,
+      "speaker": "MC",
+      "character": "mc",
+      "text": "Không có gì ạ.\nEm cảm ơn cô nhiều.",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 60,
+      "speaker": "CÔ Y TÁ",
+      "character": "nurse",
+      "text": "...\nUkm, về đi. Nhớ cô dặn đó!",
+      "kind": "say"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 61,
+      "speaker": null,
+      "character": "system_msg",
+      "text": "CHAPTER 1 COMPLETE\nSPECIAL ROUTE: INFIRMARY",
+      "kind": "sys"
+    },
+    {
+      "section": "SPECIAL ROUTE S",
+      "index": 62,
+      "speaker": "SYSTEM NOTE",
+      "character": "system_note",
+      "text": "Bạn không hoàn thành được bất cứ kế hoạch nào trong ngày.\nNhưng ít nhất bạn đã unlock một địa điểm mới.",
+      "kind": "say"
+    }
+  ]
+}

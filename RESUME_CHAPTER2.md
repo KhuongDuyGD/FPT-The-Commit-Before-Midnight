@@ -1,3 +1,5 @@
+> Status 2026-09-29: Chapter 2 is temporarily removed from the game at the user’s request. Archived source is in `migration/chapter2_paused/`; the historical handoff below does not describe the active Chapter 1 rebuild.
+
 # Resume Chapter 2 — saved before lunch, 2026-09-29
 
 ## Current status

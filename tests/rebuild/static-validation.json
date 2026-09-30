@@ -1,0 +1,21 @@
+{
+  "dialogue": 318,
+  "choices": 34,
+  "energy_deltas": 21,
+  "trust_deltas": 6,
+  "flag_changes": 15,
+  "runtime_labels": 21,
+  "chapter2_in_runtime": false,
+  "legacy_chapter1_in_runtime": false,
+  "enumerated_combinations": 25894,
+  "outcomes": {
+    "HOME_SAFE": 14546,
+    "BLACK_ALLOY_CLUB": 10443,
+    "WALKING_CORPSE": 801,
+    "INFIRMARY": 104
+  },
+  "minimum_break_energy": 29,
+  "minimum_after_class_energy": 9,
+  "missing_artwork": [],
+  "infirmary_naturally_reachable": true
+}

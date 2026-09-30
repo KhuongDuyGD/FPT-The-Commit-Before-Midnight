@@ -1,116 +1,87 @@
-# FPT: 23:59 Escape Protocol
+# FPT: The Commit Before Midnight
 
-A complete Ren'Py visual novel with the original escape story and Chapter 2,
-**LOVE PROTOCOL**, based on the supplied Chapter 2 narrative brief.
-The game now follows the new full-day screenplay, preserving its Vietnamese
-dialogue, jokes, choices, and extended night route. The supplied FPTU/KTX art
-is used for the cast and locations, with generated placeholder WAV cues. The
-bad ending uses `MainExhaust.png`; the old skeleton image is not displayed.
+Dự án Ren’Py phát triển Chapter 1 — **Một ngày rất bình thường của sinh viên IT**.
+Resolution 1920×1080; cửa sổ và fullscreen do Ren’Py tự scale.
+Repository: [KhuongDuyGD/FPT-The-Commit-Before-Midnight](https://github.com/KhuongDuyGD/FPT-The-Commit-Before-Midnight).
 
-## Run
+## Mở game
 
-Open this folder as a project in Ren'Py 8.5 or newer and choose **Launch Project**. The
-project uses a 1280×720 virtual resolution. Ren'Py itself is not included.
+**Cách nhanh trên máy này:** mở thư mục project rồi nhấp đúp `Choi-Game.cmd`.
+Game vào main menu mới; chọn **New Game** để bắt đầu. File này dùng Ren’Py SDK đã cài trong `%TEMP%` hoặc thư mục do biến `RENPY_SDK` chỉ tới.
 
-To use this inside another normal Ren'Py project, copy the entire `game` folder
-and replace that project's starter `script.rpy`, `screens.rpy`, and `options.rpy`
-with the files here. Avoid keeping duplicate screen or label definitions.
+Nếu không dùng file đó, mở Ren’Py Launcher 8.5.3 hoặc mới hơn, chọn project ở
+`D:\Game_Project\FPTChaosVisualNovel\fpt-2359-escape-protocol` rồi nhấn **Launch Project**.
 
-## Controls
+Có thể chạy trực tiếp từ PowerShell bằng `./launch-game.ps1 -SdkPath 'đường dẫn RenPy SDK'`.
+Script tự nhận `$env:RENPY_SDK`, hoặc SDK kiểm thử trong `%TEMP%/fpt-commit-rebuild-sdk/renpy-8.5.3-sdk` nếu có.
+Không cần build/package/export.
 
-- Click, Enter, or Space: advance dialogue
-- Mouse wheel up, Page Up, or **Back**: rollback
-- **Skip** and **Auto**: quick menu above the dialogue box
-- **Save**, **Load**, **History**, **Prefs**: quick menu above the dialogue box
-- Esc or right click: game menu
+## Nội dung và hệ thống
 
-The Ending Gallery records all five endings across playthroughs. Chapter 1
-endings offer **Return to Main Menu** and **Start New Game+**. New Game+ resets
-the starting stats and shows “Difficulty Unlocked: SENIOR YEAR.”
+Chapter 1 được rebuild từ tài liệu cũ, rồi polish theo `../FPT_The_Commit_Before_Midnight_CH1_POLISH_UPDATE_PROMPT.md`.
+Kịch bản đang chạy trong `game/chapters/chapter_01.rpy` là bản chuẩn nội dung: giữ nguyên 318 khối thoại, 34 lựa chọn và các flag. Chỉ ba Energy delta được phép đã đổi.
+Importer đời đầu được lưu trong `migration/legacy_chapter1/`; không chạy lại trên tài liệu rebuild cũ đã đổi định dạng vì có thể làm mất thoại nhiều dòng.
 
-Chapter 1's Good Ending opens **Tiếp tục Chương 2**. After unlocking it, choose
-**Chapter Select → Chương 2 — LOVE PROTOCOL** to start it directly. Players who
-already obtained the original Good Ending automatically qualify. Chapter 2
-has hidden relationship stats and a shared allowance of three **Hỏi Ngân**
-hints. Ordinary dialogue with Ngân does not spend a hint. Chapter 3 is teased
-after Nghi's Good Ending; it has no playable content in this release.
+Energy bắt đầu 60/100, clamp 0–100. Trust Linh/Ngân là stat ẩn, dùng cùng state với affinity đời đầu để save cũ vẫn tương thích.
+Route ưu tiên: **INFIRMARY → BLACK_ALLOY_CLUB → WALKING_CORPSE → HOME_SAFE**.
+Infirmary chỉ mở trước encounter thầy thể dục và khóa các route khác khi trigger. Sau thời điểm này, Energy thấp đi Walking Corpse nếu chưa bị PE Club bắt. Mọi playthrough state dùng `default` để hỗ trợ save/load/rollback.
 
-Windows playtest builds are in `dist`. Extract the entire `3.1-win.zip` package
-and open `FPT2359EscapeProtocol.exe`; keep its `game`, `lib`, and `renpy` folders
-beside it. See [CHAPTER2.md](CHAPTER2.md) for implementation and route details.
+Main menu dùng năm artwork ứng với Chapter 1–5 dựa trên persistent chapter entry; Chapter 2 vẫn tạm đóng. Menu, Gallery, Load, Save, Preferences, History, About dùng action Ren’Py chuẩn.
+Continue bị vô hiệu khi chưa có save phù hợp. Textbox luôn cố định dưới màn hình;
+choice nằm phía trên, có hover/focus và thao tác chuột/bàn phím.
 
-## Files
+Click/Enter/Space để tiếp tục; Page Up hoặc Back để rollback; Esc/right click mở game menu.
+Quick menu có History, Skip, Auto, Save, Load và Prefs.
 
-- `game/script.rpy`: prologue, scenes, choices, and route checks
-- `game/variables.rpy`: story stats, flags, gallery state, ending condition
-- `game/characters.rpy`: cast and image declarations
-- `game/screens.rpy`: HUD, dialogue, menus, gallery, ending cards
-- `game/endings.rpy`: both endings and New Game+
-- `game/audio.rpy`: sound cue names and flash transition
-- `game/options.rpy`: project settings
-- `tools/build_story.py`: one-time importer for this exact v2.0 screenplay
-- `game/chapter2.rpy`: scenes CH2_00–CH2_12 and relationship choices
-- `game/chapter2_endings.rpy`: Nghi Good/Bad and Ngân secret endings
-- `game/chapter2_state.rpy`: save defaults, migration, hints, unlocks, resolver
-- `game/chapter2_assets.rpy`: new characters, expressions, maps and CGs
-- `game/stage.rpy`: story presence, directed shots, fades and speaker focus
-- `game/chapter_screens.rpy`: Chapter Select, hint messages and ending UI
-- `game/chapter2_testcases.rpy`: chapter, hint, save and ending engine tests
-- `game/polish_testcases.rpy`: composition, layout, height and Continue regressions
-- `tools/build_chapter2.py`: attributed dialogue importer for the supplied brief
-- `tools/generate_placeholders.py`: reproducible placeholder assets
+## Chapter cũ và save
 
-## Character visibility
+Chapter 1 cũ không còn runtime path. Bản lưu nằm trong `migration/legacy_chapter1/`.
+Theo yêu cầu mới, **Chapter 2 tạm bị gỡ khỏi game**. Bản lưu nằm trong `migration/chapter2_paused/`;
+không có nút tiếp tục Chapter 2 hoặc Chapter Select. Artwork Chapter 2 vẫn được giữ.
+Các bản lưu mã có đuôi `.rpy.txt`/`.py.txt`, nằm ngoài `game/` nên Ren’Py không nạp.
 
-Scene labels call `set_stage(...)` with the story-present cast and an optional
-`visual=(...)` composition. `set_shot(...)` changes the camera composition
-without making anyone leave the room. Most shots contain two characters;
-normal shots are capped at three. `stage.rpy` brightens the current speaker,
-draws them in front, and gently dims/scales other visible participants over
-0.2 seconds. Entrances/exits fade over 0.25 seconds; expressions crossfade over
-0.15 seconds. Phone hints leave the physical shot unchanged. All standees,
-including the philosophy teacher, PE teacher and nurse, scale proportionally
-to the same 620-pixel base height. The PLAYER expression changes by scene, so
-the morning and night route use `MainExhaust.png`, the Windows and LMS conflicts
-use `MainAngry.png`, the deadline shock uses `MainCry.png`, and the successful
-escape uses `MainGoodMood.png`. Chapter 2 adds empathy, embarrassment, sadness,
-surprise and delight using the new expression artwork.
+Thư mục save `FPT2359EscapeProtocol` được giữ cho game và các trường persistent unlock cũ.
+Save của kịch bản cũ không thể tải trong bản rebuild vì label cũ đã bị loại bỏ.
+Load hiển thị các slot đó là `Previous version save`; Continue chỉ chọn save Chapter 1 mới.
+New Game reset state của lượt chơi và giữ persistent unlock.
 
-## Main menu art
+## Asset và giới hạn
 
-`GameMainMenu.png` supplies the title-screen backdrop. `LogoGame.png` replaces
-the menu's text title, and the menu buttons remain clickable Ren'Py controls.
-`GameIcon.png` is the game window icon.
+Dùng artwork tại các thư mục mới `Main_Home`, `School_Map`, `Outside`, `MainMenu`, `GameIcon_Logo`, `GalleryImage`, `characters/Main` và các folder cast liên quan. `DreamPlace.png` là nền cả ba dream scene.
+20 expression Main dùng một image tag, đổi theo emotional beat. Bốn CG xuất hiện trong story và chỉ unlock trong Gallery khi đã được xem; slot Nurse khóa chỉ hiện `???`.
+Logo trong suốt là layer riêng trên menu, icon mới dùng cho cửa sổ game. Không đổi tên, duplicate, tải Internet hoặc sinh artwork mới.
+Hai cảnh đường về chưa có hình riêng nên vẫn dùng nền màu an toàn.
+Alarm và notification dùng WAV hiện có. Các sound/ambience chưa có file được bỏ qua an toàn.
+Font DejaVu Sans và Twemoji có sẵn trong Ren’Py, đủ tiếng Việt và emoji trong nguồn.
 
-Normal launches always open the main menu. Continue loads the latest save
-only when selected. New Game, Chapter Select and in-game chapter continuation
-retain their existing behavior. Dialogue uses a fixed 204-pixel bottom panel;
-choices expand upward above the quick menu, and hints overlay the choice area.
+**Đường vào Infirmary:** ngủ tiếp `+5`, bỏ ăn sáng `−10`, chạy nước rút `−15`, tự làm lab `−8`, bỏ bữa trưa `−10`, lớp chiều `−10` đưa Energy từ 60 xuống **12** trước khi gặp thầy thể dục. Route vẫn cần Energy ≤15 và chỉ hoạt động khi cửa sổ Infirmary còn mở.
 
-## Tuning the routes
+## File chính
 
-Choice deltas are next to their menu entries in `game/script.rpy`. The GOOD
-ENDING requires choosing **Về.**, `escape_point >= 4`, `energy > 0`, and
-`pending_tasks <= 2`. Choosing to stay, running out of energy, reaching six
-pending tasks, or attempting to leave without the required stats enters the
-BAD ENDING route. The screenplay's morning attendance is recorded on arrival;
-the late assignment adds one pending task and is marked uploaded in the night
-route. The meeting's `PendingTasks -1` is clamped to zero so the HUD never shows
-a negative task count.
+- `game/script.rpy`: New Game entry.
+- `game/chapters/chapter_01.rpy`: Chapter 1 mới.
+- `game/systems/`: state, Energy, Trust/affinity compatibility, route, asset, Gallery unlock, audio, save compatibility, transitions, navigation.
+- `game/characters.rpy`, `game/characters/chapter1_cast.rpy`: background, sprite và speaker.
+- `game/stage.rpy`: staging, expression, focus, giới hạn ba sprite.
+- `game/screens/`: menu động, Gallery, dialogue/choice, HUD, route completion, Save/Load/Preferences/History/About.
+- `game/styles/styles.rpy`, `game/options.rpy`: font, style và cấu hình.
+- `tools/verify_chapter1.py`: đối chiếu dialogue/choice với bản Chapter 1 đã ghi nhận, kiểm tra ba delta được phép, asset và route.
+- `tools/check_rebuild.ps1`: lint và kiểm thử bằng SDK trên bản sao dự án, cách ly save/persistent.
 
-`characters.rpy` maps `FPTUday.png` to the daytime campus view (replacing the
-missing `FPTUanime.png`). `KTXAfternoon.png` is declared for a future afternoon
-dorm scene; the 18:02 ending uses `KTXNight.png`. The afternoon gate and
-classroom scenes reuse their day paintings until dedicated assets exist. Extra
-canteen time-of-day variants are declared for future scenes. To replace a sound
-cue, update its path in `audio.rpy`.
+## Kết quả kiểm thử
 
-## Verification
+Ren’Py lint sạch. 21/21 engine tests và 133/133 assertions qua, gồm bốn route,
+Infirmary đạt tự nhiên với Energy 12, ngưỡng Walking Corpse sau khi đóng cửa sổ Infirmary,
+CG unlock, expression, menu động, replay/reset, Save/Load/Continue, rollback, history, UI và Preferences.
+Kiểm tra cửa sổ 960×540, 1280×720, 1024×768 và 1920×1080.
+Lần boot bình thường mở main menu, không auto-start, kể cả khi có biến môi trường auto-load.
 
-`game/testcases.rpy` contains Ren'Py engine tests for both endings, a failed
-escape, and the supporting menus. In a Ren'Py 8.5 SDK, run
-`renpy.py <project> lint --error-code` and
-`renpy.py --savedir <isolated-test-folder> <project> test --overwrite-screenshots`.
-Use a separate save folder for tests so simulated ending unlocks do not alter
-your actual gallery. Screenshot captures are for visual inspection; overwrite
-them when testing different parameterized routes or transition timing.
+Báo cáo hiện tại: `tests/rebuild/POLISH_RESULTS.md`, `lint.txt`, `engine-tests.txt`, `static-validation.json`,
+`font-validation.json`, `startup.json`; ảnh QA trong `tests/rebuild/screenshots/`.
+Để chạy lại: `./tools/check_rebuild.ps1 -SdkPath 'đường dẫn RenPy SDK'`.
+Script tạo bản sao trong `tests/rebuild/runner-*`, dùng namespace save riêng và chép ảnh QA về báo cáo.
+Không chạy test runner trực tiếp trên project gốc: Ren’Py vẫn có thể ghi vào `game/saves` dù có `--savedir`.
+
+Trong lần kiểm thử đầu, Ren’Py đã ghi save playtest vào `game/saves` của project gốc.
+Dữ liệu thư mục đó và bản persistent lúc phát hiện được giữ tại `migration/rebuild_playtest_saves/`.
+Gallery Chapter 1 do playtest tạo đã được làm sạch; xem báo cáo rebuild ban đầu trong `tests/rebuild/RESULTS.md` để biết chi tiết.

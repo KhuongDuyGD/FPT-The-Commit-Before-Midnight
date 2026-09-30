@@ -1,0 +1,60 @@
+
+[rpytest] Starting test run
+[rpytest] Platform:      Windows-11-10.0.26200-SP0
+[rpytest] Python:        3.12.7
+[rpytest] Ren'Py:        Ren'Py 8.5.3.26051504
+[rpytest] Game Version:  4.0
+
+[rpytest] [exc] + global
+[rpytest] [exc]   - ch1_home_safe(cosmetic='Tắt Discord.')
+[rpytest] [exc]   - ch1_home_safe(cosmetic='Tắt Discord.') (3.031 s)
+[rpytest] [exc]   - ch1_home_safe(cosmetic='Nhìn tin nhắn 10 giây.')
+[rpytest] [exc]   - ch1_home_safe(cosmetic='Nhìn tin nhắn 10 giây.') (2.055 s)
+[rpytest] [exc]   - ch1_home_safe(cosmetic='Gõ “không” rồi xóa.')
+[rpytest] [exc]   - ch1_home_safe(cosmetic='Gõ “không” rồi xóa.') (2.056 s)
+[rpytest] [exc]   - ch1_black_alloy
+[rpytest] [exc]   - ch1_black_alloy (0.963 s)
+[rpytest] [exc]   - ch1_walking_corpse
+[rpytest] [exc]   - ch1_walking_corpse (1.029 s)
+[rpytest] [exc]   - ch1_final_resistance(starting_energy=26)
+[rpytest] [exc]   - ch1_final_resistance(starting_energy=26) (0.677 s)
+[rpytest] [exc]   - ch1_final_resistance(starting_energy=25)
+[rpytest] [exc]   - ch1_final_resistance(starting_energy=25) (0.612 s)
+[rpytest] [exc]   - ch1_final_resistance(starting_energy=20)
+[rpytest] [exc]   - ch1_final_resistance(starting_energy=20) (0.558 s)
+[rpytest] [exc]   - ch1_infirmary(breakfast='food')
+[rpytest] [exc]   - ch1_infirmary(breakfast='food') (0.674 s)
+[rpytest] [exc]   - ch1_infirmary(breakfast='coffee')
+[rpytest] [exc]   - ch1_infirmary(breakfast='coffee') (0.557 s)
+[rpytest] [exc]   - ch1_infirmary(breakfast='skip')
+[rpytest] [exc]   - ch1_infirmary(breakfast='skip') (0.543 s)
+[rpytest] [exc]   - ch1_infirmary_natural
+[rpytest] [exc]   - ch1_infirmary_natural (0.955 s)
+[rpytest] [exc]   - ch1_leaving_low_energy(starting_energy=10)
+[rpytest] [exc]   - ch1_leaving_low_energy(starting_energy=10) (0.363 s)
+[rpytest] [exc]   - ch1_leaving_low_energy(starting_energy=20)
+[rpytest] [exc]   - ch1_leaving_low_energy(starting_energy=20) (0.433 s)
+[rpytest] [exc]   - ch1_menu_and_gallery
+[rpytest] [exc]   - ch1_menu_and_gallery (1.574 s)
+[rpytest] [exc]   - ch1_save_load_rollback
+[rpytest] [exc]   - ch1_save_load_rollback (1.378 s)
+[rpytest] [exc]   - ch1_ui(window_size=(960, 540))
+[rpytest] [exc]   - ch1_ui(window_size=(960, 540)) (1.953 s)
+[rpytest] [exc]   - ch1_ui(window_size=(1280, 720))
+[rpytest] [exc]   - ch1_ui(window_size=(1280, 720)) (2.162 s)
+[rpytest] [exc]   - ch1_ui(window_size=(1024, 768))
+[rpytest] [exc]   - ch1_ui(window_size=(1024, 768)) (1.996 s)
+[rpytest] [exc]   - ch1_ui(window_size=(1920, 1080))
+[rpytest] [exc]   - ch1_ui(window_size=(1920, 1080)) (2.539 s)
+[rpytest] [exc]   - ch1_route_boundaries
+[rpytest] [exc]   - ch1_route_boundaries (0.285 s)
+
+[rpytest] Test outcomes (Summary)
+[rpytest] Test suites:     1 |     1 passed |     0 xfailed |     0 failed |     0 xpassed |     0 skipped |     0 not run
+[rpytest] Test cases :    21 |    21 passed |     0 xfailed |     0 failed |     0 xpassed |     0 skipped |     0 not run
+[rpytest] Test hooks :     1 |     1 passed |     0 xfailed |     0 failed |     0 xpassed |     0 skipped |     0 not run
+[rpytest] Assertions :   133 |   133 passed |     0 xfailed |     0 failed |     0 xpassed | 
+
+[rpytest] Time: 26.872 s
+[rpytest] Status: PASSED 
+

@@ -31,14 +31,37 @@ transform stage_expression(old_image, new_image):
 init -20 python:
     from functools import partial
 
-    STAGE_ACTORS = ("player", "minh", "linh", "thaydev", "colms", "baove",
-                    "ngan", "nghi", "philosophy", "nurse", "pe")
+    STAGE_ACTORS = ("player", "minh", "linh", "thaydev", "ngan", "nurse", "pe", "necrass")
     STAGE_MAX_VISIBLE = 3
+    MC_EXPRESSIONS = ("normal", "sleepy", "annoyed", "smug", "surprised", "thinking",
+                      "deadpan", "confused", "nervous", "veryhappy", "panic", "goodmood",
+                      "determined", "serious", "embarrassed", "exhaust", "sad", "cry",
+                      "empathy", "angry")
 
     def stage_image(actor):
-        expression = {"player": player_expression, "ngan": ngan_expression,
-                      "nghi": nghi_expression}.get(actor, "normal")
+        if actor == "player":
+            expression = player_expression if player_expression in MC_EXPRESSIONS else "normal"
+            return "player " + expression
+        expression = ngan_expression if actor == "ngan" else "normal"
         return actor if expression == "normal" else actor + " " + expression
+
+    def set_player_expression(expression):
+        global player_expression
+        if expression not in MC_EXPRESSIONS:
+            raise ValueError("Unknown MC expression: " + str(expression))
+        if player_expression != expression:
+            player_expression = expression
+            if "player" in stage_visual:
+                refresh_stage()
+
+    def set_energy_expression(context="ordinary"):
+        # Evaluate at checkpoints; explicit scene direction takes priority.
+        if energy <= 15 or (energy <= 25 and context == "fatigue"):
+            set_player_expression("exhaust")
+        elif energy <= 45:
+            set_player_expression("sleepy")
+        else:
+            set_player_expression("normal")
 
     def refresh_stage():
         count = len(stage_visual)
@@ -80,7 +103,7 @@ init -20 python:
         refresh_stage()
 
     def set_stage(*actors, visual=None, entrance="fade"):
-        """Call for a scene change or an actual entrance/exit. Legacy API kept."""
+        """Call for a scene change or an actual entrance/exit."""
         global stage_cast, stage_focus
         if any(a not in STAGE_ACTORS for a in actors):
             raise ValueError("Unknown stage actor.")
@@ -100,19 +123,21 @@ init -20 python:
                     partners.remove("player")
                     partners.insert(0, "player")
                 set_shot(*(partners[:STAGE_MAX_VISIBLE - 1] + [actor]))
-            stage_focus = actor if actor in stage_visual else None
-            refresh_stage()
+            new_focus = actor if actor in stage_visual else None
+            if new_focus != stage_focus:
+                stage_focus = new_focus
+                refresh_stage()
 
     def migrate_stage():
-        # v3.0 saves contain story cast but no visual composition. Remove their
-        # crowded sprites while preserving location, expressions and story state.
+        # Restore the saved composition and reconcile scene tags after load.
+        if player_expression == "exhausted":
+            set_player_expression("exhaust")
         if not stage_visual or any(a not in stage_cast for a in stage_visual):
             set_shot(*stage_cast[:STAGE_MAX_VISIBLE])
         else:
             set_shot(*stage_visual[:STAGE_MAX_VISIBLE])
 
     def active_speaker_image(who):
-        actor = {"PLAYER": "player", "MINH": "minh", "LINH": "linh",
-                 "THẦY DEV": "thaydev", "CÔ LMS": "colms",
-                 "CHÚ BẢO VỆ": "baove", "NGÂN": "ngan", "NGHI": "nghi"}.get(who)
+        actor = {"PLAYER": "player", "MC": "player", "MINH": "minh", "LINH": "linh",
+                 "THẦY DEV": "thaydev", "NGÂN": "ngan"}.get(who)
         return stage_image(actor) if actor else None

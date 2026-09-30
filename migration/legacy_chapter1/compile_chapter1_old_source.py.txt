@@ -1,0 +1,507 @@
+"""Compile the supplied immutable screenplay, with explicitly authored control flow.
+
+Only the Chapter 1 source section is read. Prose in the rebuild brief is never
+executed as code. The compiler also records an exact dialogue/choice manifest.
+"""
+from pathlib import Path
+import argparse
+import hashlib
+import json
+import re
+
+ROOT = Path(__file__).resolve().parents[1]
+SOURCE = ROOT.parent / "FPT_The_Commit_Before_Midnight_MASTER_REBUILD_PROMPT.md"
+
+SPEAKERS = {
+    "MC": "mc", "MC (thought)": "mc_thought", "MC (whisper)": "mc_whisper",
+    "MINH": "m", "MINH (Discord)": "minh_discord", "MINH (message)": "minh_message",
+    "MINH (whisper)": "minh_whisper", "LINH": "l", "LINH (whisper)": "linh_whisper",
+    "NGÂN": "ngan", "THẦY DEV": "dev", "CẢ LỚP": "crowd",
+    "NARRATOR": "n", "Narrator": "n", "NECRASS_SIM": "necrass_sim",
+    "Necrass": "necrass", "NỮ THẦN": "goddess", "GIỌNG NỮ LẠ": "unknown_woman",
+    "??? (off-screen)": "pe_offscreen", "THẦY THỂ DỤC": "pe",
+    "THẦY THỂ DỤC (message)": "pe_message", "GIỌNG NỮ": "nurse_voice",
+    "CÔ Y TÁ": "nurse", "SYSTEM NOTE": "system_note",
+}
+
+# Direction is attached to exact source tokens. Regeneration cannot rewrite a
+# spoken line or silently move a cue to a different line.
+EXPRESSION_CUES = {
+    "1": {8: "annoyed", 12: "smug", 15: "normal", 21: "surprised",
+          23: "thinking", 24: "surprised", 26: "deadpan", 28: "annoyed",
+          32: "confused", 34: "nervous", 38: "thinking", 44: "deadpan",
+          48: "smug", 50: "veryhappy", 52: "annoyed", 54: "deadpan",
+          57: "confused", 59: "smug", 63: "panic", 65: "confused",
+          67: "sleepy", 70: "thinking"},
+    "2A": {1: "goodmood", 3: "smug", 5: "annoyed", 9: "surprised", 11: "panic"},
+    "2B": {1: "determined", 4: "sleepy", 7: "annoyed"},
+    "3": {4: "goodmood", 7: "smug", 11: "determined"},
+    "4": {5: "annoyed", 7: "deadpan", 17: "smug"},
+    "5": {4: "deadpan", 6: "smug", 8: "embarrassed", 12: "smug"},
+    "6": {7: "serious", 9: "nervous", 11: "deadpan", 15: "deadpan",
+          25: "exhaust"},
+    "7": {14: "surprised", 18: "nervous", 20: "deadpan"},
+    "8": {12: "annoyed", 14: "confused", 32: "annoyed"},
+    "9": {3: "exhaust", 7: "panic"},
+    "10": {4: "smug"},
+    "11": {11: "panic", 13: "exhaust"},
+    "12": {9: "surprised", 11: "nervous", 18: "nervous", 24: "panic"},
+    "13": {7: "confused", 14: "annoyed", 16: "smug", 24: "panic",
+           28: "smug", 36: "nervous"},
+    "14": {3: "confused", 16: "serious", 28: "exhaust",
+           31: "deadpan", 32: "panic"},
+    "15": {3: "determined"},
+    "GOOD ROUTE": {9: "sleepy", 31: "surprised", 36: "deadpan"},
+    "BAD ROUTE A": {4: "panic", 12: "deadpan", 14: "sad",
+                    17: "deadpan", 22: "cry"},
+    "BAD ROUTE B": {3: "exhaust", 9: "deadpan", 15: "exhaust"},
+    "SPECIAL ROUTE S": {4: "confused", 10: "deadpan", 14: "nervous",
+                        26: "smug", 30: "embarrassed", 32: "confused",
+                        40: "nervous", 43: "confused", 45: "deadpan",
+                        59: "empathy"},
+}
+
+ENERGY_OVERRIDES = {("3", 12): -10, ("3", 17): -15, ("10", 14): -10}
+
+def clean_markup(text):
+    text = text.replace("`", "").strip()
+    if text.startswith("**") and text.endswith("**"):
+        return text[2:-2]
+    if text.startswith("*") and text.endswith("*"):
+        return text[1:-1]
+    return text
+
+def read_sections():
+    text = SOURCE.read_text(encoding="utf-8")
+    text = re.split(r"^# FPT: The Commit Before Midnight\n", text, maxsplit=1, flags=re.M)[1]
+    sections = {}
+    key = None
+    for line in text.splitlines():
+        if line.startswith("# "):
+            key = line[2:].split(" — ")[0].split(". ")[0]
+            sections[key] = []
+        elif key is not None:
+            sections[key].append(line)
+    result = {}
+    for key, lines in sections.items():
+        items = []
+        i = 0
+        while i < len(lines):
+            line = lines[i].strip()
+            i += 1
+            if not line or line == "---":
+                continue
+            speaker = re.match(r"\*\*([^*]+):\*\*\s*(.*)", line)
+            if speaker or line == "[NARRATOR:]":
+                name, body = speaker.groups() if speaker else ("NARRATOR", "")
+                parts = [body] if body else []
+                while (not body and i < len(lines) and lines[i].strip()
+                       and not lines[i].strip().startswith(("→", "[", "**"))):
+                    parts.append(lines[i].rstrip())
+                    i += 1
+                items.append(("say", name, "\n".join(p.rstrip() for p in parts).replace("`", "").strip()))
+            elif re.match(r"\d+\. \*\*", line):
+                caption = re.match(r"\d+\. \*\*(.*?)\*\*", line).group(1)
+                items.append(("choice", caption, ""))
+                rest = line.split("**", 2)[-1]
+                if "[" in rest:
+                    items.append(("effect", rest, ""))
+            elif line.startswith("[SYS]") or line.startswith("[Hệ thống]"):
+                body = line.split("]", 1)[1].strip()
+                if not body:
+                    while i < len(lines) and lines[i].strip():
+                        body += ("\n" if body else "") + lines[i].strip()
+                        i += 1
+                items.append(("sys", clean_markup(body), ""))
+            elif line.startswith("["):
+                tag, _, body = line.partition("]")
+                items.append((tag[1:], body.strip(), ""))
+            else:
+                items.append(("note", line, ""))
+        result[key] = items
+    return result
+
+
+def quote(text):
+    return json.dumps(text.replace("[", "[[").replace("{", "{{").replace("%", "%%"), ensure_ascii=False)
+
+
+class Compiler:
+    def __init__(self, sections):
+        self.sections = sections
+        self.lines = ["# Generated by tools/compile_chapter1.py from the supplied Chapter 1.",
+                      "# Dialogue and captions are immutable; presentation and systems live separately.", ""]
+        self.used = set()
+        self.manifest = []
+
+    def code(self, line="", indent=1):
+        self.lines.append("    " * indent + line if line else "")
+
+    def label(self, name):
+        self.code()
+        self.code("label " + name + ":", 0)
+
+    def emit(self, section, start=0, end=None, indent=1):
+        items = self.sections[section]
+        for index in range(start, len(items) if end is None else end):
+            kind, value, text = items[index]
+            cue = EXPRESSION_CUES.get(section, {}).get(index)
+            if cue:
+                self.code('$ set_player_expression("' + cue + '")', indent)
+            if kind == "say":
+                self.code(SPEAKERS[value] + " " + quote(text), indent)
+                self.used.add((section, index))
+                self.manifest.append({"section": section, "index": index, "speaker": value,
+                                      "character": SPEAKERS[value], "text": text, "kind": "say"})
+            elif kind == "sys":
+                if re.fullmatch(r"\[ENERGY [+-]?\d+\]", value):
+                    self.effect(value, indent, section, index)
+                else:
+                    self.code("system_msg " + quote(value.replace("**", "")), indent)
+                    self.used.add((section, index))
+                    self.manifest.append({"section": section, "index": index, "speaker": None,
+                                          "character": "system_msg", "text": value.replace("**", ""), "kind": "sys"})
+            elif kind == "PAUSE":
+                self.code("pause 0.35", indent)
+            elif kind in ("note", "effect", "FLAG"):
+                self.effect(value, indent, section, index)
+            elif kind == "SFX":
+                self.code("# [SFX] " + value, indent)
+                cue = SOUNDS.get((section, index))
+                if cue:
+                    self.code('$ play_scene_sound("' + cue + '")', indent)
+                if (section, index) == ("9", 2):
+                    self.code('$ scene_ambience()', indent)
+            elif kind == "ACT":
+                self.code("# [ACT] " + value, indent)
+                for line in ACTIONS.get((section, index), []):
+                    self.code(line, indent)
+            elif kind == "BG":
+                self.code("# [BG] " + value, indent)
+                for line in BACKGROUNDS[(section, index)]:
+                    self.code(line, indent)
+            elif kind.startswith("FLASHBACK"):
+                if kind == "FLASHBACK END":
+                    self.code("hide screen device_panel", indent)
+                    self.code("scene bedroom_morning with fade", indent)
+                    self.code('$ scene_ambience("room")', indent)
+                    self.code('$ set_stage("player")', indent)
+
+    def effect(self, value, indent, section=None, index=None):
+        for amount in re.findall(r"\[ENERGY ([+-]?\d+)\]", value):
+            adjusted = ENERGY_OVERRIDES.get((section, index), int(amount))
+            self.code("$ change_energy(" + ("+" if adjusted > 0 else "") + str(adjusted) + ")", indent)
+        for name, amount in re.findall(r"\[AFFINITY: (LINH|NGÂN) ([+-]\d+)\]", value):
+            self.code('$ change_trust("' + {"LINH": "linh", "NGÂN": "ngan"}[name] + '", ' + amount + ')', indent)
+        flag = re.search(r"(?:FLAG:\s*|`)([A-Z_]+) (?:= (TRUE)|([+]\d+))", value)
+        if flag:
+            name, enabled, amount = flag.groups()
+            if name not in {"OVERSLEPT", "RESPONSIBLE_ONCE", "CLASS_LATE", "COFFEE_ONLY",
+                            "STILL_NO_REGRET", "FAKE_PROMISE", "DEADLINE_GREED", "TOO_MUCH_COFFEE",
+                            "DEV_RESPECT", "PE_PRESSURE", "PE_CLUB_CAPTURED"}:
+                raise ValueError("Unknown source flag " + name)
+            self.code("$ " + name.lower() + (" = True" if enabled else " += " + amount), indent)
+
+    def option(self, section, index, start=None, end=None, indent=1, extra=()):
+        kind, caption, _ = self.sections[section][index]
+        assert kind == "choice"
+        self.code(quote(caption) + ":", indent + 1)
+        self.used.add((section, index))
+        self.manifest.append({"section": section, "index": index, "text": caption, "kind": "choice"})
+        for line in extra:
+            self.code(line, indent + 2)
+        if start is not None:
+            self.emit(section, start, end, indent + 2)
+
+    def checkpoint(self):
+        self.code("call ch1_campus_checkpoint")
+        self.code("if _return:")
+        self.code("jump ch1_infirmary", 2)
+
+    def write(self):
+        expected = {(section, i) for section, items in self.sections.items()
+                    if section not in ("0", "16", "17", "18")
+                    for i, item in enumerate(items) if item[0] in ("say", "choice", "sys")
+                    and item[1] != "[ENERGY -10]"}
+        assert self.used == expected, "Uncompiled source tokens: " + str(expected - self.used)
+        for folder in (ROOT / "game/chapters", ROOT / "tests/rebuild"):
+            folder.mkdir(parents=True, exist_ok=True)
+        (ROOT / "game/chapters/chapter_01.rpy").write_text("\n".join(self.lines) + "\n", encoding="utf-8")
+        data = {"source_sha256": hashlib.sha256(SOURCE.read_bytes()).hexdigest(), "content": self.manifest}
+        (ROOT / "tests/rebuild/source_manifest.json").write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+        print("Compiled", len(self.manifest), "exact source dialogue/system/choice entries.")
+
+
+def scene(image, cast, ambience=None, expression=None):
+    lines = ['scene ' + image, '$ scene_ambience(' + (quote(ambience) if ambience else "") + ')']
+    if expression == "energy":
+        lines.append('$ set_energy_expression()')
+    elif expression:
+        lines.append('$ set_player_expression("' + expression + '")')
+    return lines + ['$ set_stage(' + cast + ')', 'with Dissolve(0.3)']
+
+
+BACKGROUNDS = {
+    ("1", 0): scene("bedroom_morning", '"player"', "room"),
+    ("1", 6): scene("bedroom_gaming", '', None) + ['show screen device_panel', 'with fade'],
+    ("1", 62): scene("bedroom_morning", '"player"', "room"),
+    ("2A", 0): scene("dream_place", '"player", "necrass"'),
+    ("2A", 8): scene("bedroom_morning", '"player"', "room"),
+    ("3", 0): scene("bedroom_morning", '"player"', "room", "energy"),
+    ("4", 0): scene("school_gate_morning", '"player", "minh"', "campus", "energy"),
+    ("5", 0): scene("hallway", '"player", "minh", "linh"', "campus", "energy"),
+    ("6", 0): scene("computer_lab", '"player", "minh", "linh", "thaydev", visual=("player", "thaydev")', "classroom", "energy"),
+    ("8", 0): scene("canteen", '"player", "minh", "linh", "ngan", visual=("player", "minh", "ngan")', "canteen", "energy"),
+    ("10", 0): scene("canteen", '"player", "minh", "linh", "ngan", visual=("player", "linh", "ngan")', "canteen", "energy"),
+    ("11", 0): scene("classroom_afternoon", '"player", "minh", "linh", "ngan", visual=("player", "minh", "linh")', "classroom", "energy") + ['$ campus_period = "afternoon"'],
+    ("12", 0): scene("sports_afternoon", '"player", "minh", "linh", "ngan", visual=("player", "linh", "ngan")', "sports", "energy"),
+    ("15", 1): scene("school_gate_afternoon", '"player", "minh", "linh", "ngan", visual=("player", "minh", "ngan")', "campus"),
+    ("GOOD ROUTE", 1): scene("homeward_sunset", '"player"'),
+    ("GOOD ROUTE", 7): scene("bedroom_gaming", '"player"', "room"),
+    ("BAD ROUTE A", 1): scene("sports_afternoon", '"player", "minh", "linh", "ngan", "pe", visual=("player", "pe")', "sports"),
+    ("BAD ROUTE A", 15): scene("bedroom_gaming", '"player"', "room"),
+    ("BAD ROUTE B", 1): scene("homeward_dusk", '"player"'),
+    ("BAD ROUTE B", 10): scene("bedroom_gaming", '"player"', "room"),
+    ("SPECIAL ROUTE S", 1): scene("black", ''),
+    # Afternoon collapses use the afternoon painting, never morning artwork.
+    ("SPECIAL ROUTE S", 7): scene("expression ('infirmary_afternoon' if campus_period == 'afternoon' else 'infirmary_morning')", '"player", "nurse"', "infirmary"),
+    ("SPECIAL ROUTE S", 49): scene("infirmary_afternoon", '"player", "nurse"', "infirmary", "normal"),
+}
+
+SOUNDS = {("1", 1): "birds", ("1", 18): "alarm", ("1", 61): "alarm", ("2A", 7): "alarm",
+          ("6", 1): "door", ("12", 8): "whistle", ("GOOD ROUTE", 12): "notification",
+          ("BAD ROUTE A", 8): "pat", ("BAD ROUTE A", 19): "notification",
+          ("BAD ROUTE B", 6): "notification", ("BAD ROUTE B", 14): "bag"}
+
+ACTIONS = {
+    ("1", 3): ["show bedroom_morning at morning_pan"],
+    ("1", 22): ['scene dream_place', '$ scene_ambience()', '$ set_stage("player", "necrass")', 'with fade'],
+    ("1", 37): ['$ energy_visible = True', 'show screen energy_hud'],
+    ("11", 2): ['$ set_shot("player", "minh")', 'with Dissolve(0.2)', 'pause 0.2',
+                   '$ set_shot("linh", "ngan")', 'with Dissolve(0.2)', 'pause 0.2',
+                   '$ set_shot("player")', 'with Dissolve(0.15)', 'pause 0.15'],
+    ("12", 12): ['$ set_player_expression("panic")', '$ set_stage()',
+                    'scene cg_pe_intro with Dissolve(0.35)',
+                    '$ unlock_chapter1_cg("pe_intro")'],
+    ("14", 19): ['$ set_stage("player", "minh", "linh", "ngan", visual=("player", "linh", "ngan"))', 'with Dissolve(0.25)'],
+    ("15", 9): ['$ set_stage("player")', 'with Dissolve(0.25)'],
+    ("9", 6): ['show layer master at faint_tilt'],
+    ("9", 9): ['scene black with fade', '$ set_stage()', 'show layer master'],
+    ("GOOD ROUTE", 29): [],
+    ("BAD ROUTE B", 20): ['$ set_stage()', 'scene cg_walking_corpse with Dissolve(0.35)',
+                          '$ unlock_chapter1_cg("walking_corpse")', 'pause 0.5',
+                          'scene black with fade'],
+    ("SPECIAL ROUTE S", 6): ['scene cg_nurse_intro with Dissolve(0.35)',
+                              '$ unlock_chapter1_cg("nurse_intro")', 'pause 0.5'],
+}
+
+
+def compile_chapter(sections):
+    c = Compiler(sections)
+    c.label("chapter_01")
+    c.code("$ enter_chapter(1)")
+    c.emit("1", 0, 73)
+    c.code("menu:")
+    c.option("1", 73, 74, 78)
+    c.code('jump ch1_sleep_again', 3)
+    c.option("1", 78, 79, 81, extra=())
+    c.code("jump ch1_wake_up", 3)
+
+    c.label("ch1_sleep_again")
+    c.emit("2A")
+    c.code("jump ch1_morning_prep")
+    c.label("ch1_wake_up")
+    c.emit("2B")
+    c.code("jump ch1_morning_prep")
+    c.label("ch1_morning_prep")
+    c.emit("3", 0, 3)
+    c.code("menu:")
+    c.option("3", 3, 4, 6, extra=['$ breakfast_eaten = True'])
+    c.option("3", 6, 7, 10)
+    c.option("3", 10, 11, 13)
+    c.code("if overslept:")
+    c.emit("3", 14, 16, 2)
+    c.code("menu:", 2)
+    c.option("3", 16, 17, 18, 2, extra=['$ set_player_expression("panic")'])
+    c.option("3", 18, 19, 20, 2)
+    c.code('$ player_is_on_campus = True')
+    c.code('$ infirmary_window_open = True')
+    c.code("jump ch1_arrival")
+
+    c.label("ch1_arrival")
+    c.emit("4", 0, 13)
+    c.code("if class_late:")
+    c.emit("4", 14, 19, 2)
+    c.code("menu:")
+    c.option("4", 20, 21, 24)
+    c.option("4", 24, 25, 27)
+    c.option("4", 27, 28, 30, extra=['$ set_player_expression("deadpan")'])
+    c.code("jump ch1_hallway")
+
+    c.label("ch1_hallway")
+    c.emit("5", 0, 14)
+    c.code("menu:")
+    c.option("5", 15, 16, 18, extra=['$ set_player_expression("goodmood")'])
+    c.option("5", 18, 19, 21, extra=['$ set_player_expression("sleepy")'])
+    c.option("5", 21, 22, 24, extra=['$ set_player_expression("smug")'])
+    c.code("jump ch1_lab")
+
+    c.label("ch1_lab")
+    c.emit("6", 0, 19)
+    c.code("if energy > 45:")
+    c.code('$ set_player_expression("serious")', 2)
+    c.emit("6", 20, 21, 2)
+    c.code("elif energy >= 25:")
+    c.code('$ set_player_expression("sleepy")', 2)
+    c.emit("6", 22, 23, 2)
+    c.code("else:")
+    c.code('$ set_player_expression("exhaust")', 2)
+    c.emit("6", 24, 26, 2)
+    c.emit("7", 0, 1)
+    c.code("menu:")
+    c.option("7", 2, 3, 5, extra=['$ set_player_expression("serious")'])
+    c.option("7", 5, 6, 7, extra=['$ set_player_expression("normal")'])
+    c.option("7", 7, 8, 10, extra=['$ set_player_expression("nervous")'])
+    c.option("7", 10, 11, 13, extra=['$ set_player_expression("sleepy")'])
+    c.code("$ lab_troll = renpy.random.random() < 0.30", 3)
+    c.code("if lab_troll:", 3)
+    c.emit("7", 14, 22, 4)
+    c.code("jump ch1_break")
+
+    c.label("ch1_break")
+    c.emit("8", 0, 16)
+    c.code("menu:")
+    c.option("8", 17, 18, 20, extra=['$ set_player_expression("confused")'])
+    c.option("8", 20, 21, 23, extra=['$ set_player_expression("smug")'])
+    c.option("8", 23, 24, 26, extra=['$ set_player_expression("sleepy")'])
+    c.option("8", 26, 27, 33, extra=['$ set_player_expression("goodmood")'])
+    c.checkpoint()
+    c.code("jump ch1_lunch")
+
+    c.label("ch1_campus_checkpoint")
+    c.code('if not route_locked and update_day_route() == "INFIRMARY":')
+    c.code('$ energy_visible = False', 2)
+    c.code('$ set_stage("player", "linh", "ngan")', 2)
+    c.emit("9", 1, 12, 2)
+    c.code('system_msg "SPECIAL ROUTE UNLOCKED: INFIRMARY"', 2)
+    c.code("return True", 2)
+    c.code("return False")
+
+    c.label("ch1_lunch")
+    c.emit("10", 0, 8)
+    c.code("menu:")
+    c.option("10", 9, 10, 11)
+    c.option("10", 11, 12, 13)
+    c.option("10", 13, 14, 15, extra=['$ set_player_expression("determined")'])
+    c.option("10", 15, 16, 17)
+    c.code("if deadline_greed:")
+    c.emit("10", 18, 22, 2)
+    c.checkpoint()
+    c.emit("11", 0, 10)
+    c.code('$ set_energy_expression("fatigue")')
+    c.code("if too_much_coffee:")
+    c.emit("11", 11, 12, 2)
+    c.code("if 16 <= energy <= 25:")
+    c.emit("11", 13, 14, 2)
+    c.checkpoint()
+    c.code("jump ch1_after_class")
+
+    c.label("ch1_after_class")
+    c.code('$ infirmary_window_open = False')
+    c.emit("12", 0, 2)
+    c.code('$ set_player_expression("goodmood" if energy > 30 else "exhaust" if energy <= 25 else "sleepy")')
+    c.emit("12", 2, 17)
+    c.code('scene sports_afternoon with Dissolve(0.25)')
+    c.code('$ scene_ambience("sports")')
+    c.code('$ set_stage("player", "minh", "linh", "ngan", "pe", visual=("player", "pe"))')
+    c.emit("12", 17)
+    c.code("menu:")
+    c.option("13", 1, 6, 12, extra=['$ set_player_expression("nervous")'])
+    c.option("13", 2, 13, 20, extra=['$ set_player_expression("serious")'])
+    c.option("13", 3, 21, 26, extra=['$ set_player_expression("goodmood")'])
+    c.option("13", 4, 27, 38, extra=['$ set_player_expression("smug")'])
+    c.code("if pe_club_captured:")
+    c.code("jump ch1_black_alloy_club", 2)
+    c.code("if pe_pressure >= 2:")
+    c.emit("14", 2, 8, 2)
+    c.code("menu:", 2)
+    c.option("14", 9, 10, 11, 2)
+    c.option("14", 11, 12, 15, 2)
+    c.code("if energy > 20:", 4)
+    c.emit("14", 16, 25, 5)
+    c.code("else:", 4)
+    c.emit("14", 26, 33, 5)
+    c.code("if pe_club_captured:")
+    c.code("jump ch1_black_alloy_club", 2)
+    c.code("jump ch1_leaving_campus")
+
+    c.label("ch1_leaving_campus")
+    c.emit("15", 1, 8)
+    c.code('$ set_player_expression("goodmood" if energy > 30 else "exhaust")')
+    c.emit("15", 8, 11)
+    c.code("$ update_day_route(end_of_day=True)")
+    c.code('$ player_is_on_campus = False')
+    c.code('$ energy_visible = False')
+    c.code('if current_route == "WALKING_CORPSE":')
+    c.code("jump ch1_walking_corpse", 2)
+    c.code("jump ch1_home_safe")
+
+    c.label("ch1_home_safe")
+    c.emit("GOOD ROUTE", 1, 14)
+    c.code("menu:")
+    c.option("GOOD ROUTE", 15, 19, 22, extra=['$ set_player_expression("serious")'])
+    c.option("GOOD ROUTE", 16, 23, 24, extra=['$ set_player_expression("thinking")'])
+    c.option("GOOD ROUTE", 17, 25, 29, extra=['$ set_player_expression("smug")'])
+    c.code('$ set_stage()')
+    c.code('scene cg_good_sleep with fade')
+    c.code('$ unlock_chapter1_cg("good_sleep")')
+    c.code('pause 0.5')
+    c.code('scene dream_place with fade')
+    c.code('$ set_stage("player", "necrass")')
+    c.emit("GOOD ROUTE", 30, 40)
+    c.code("jump ch1_end")
+
+    c.label("ch1_black_alloy_club")
+    c.code("$ update_day_route(end_of_day=True)")
+    c.code('$ energy_visible = False')
+    c.emit("BAD ROUTE A", 1, 27)
+    c.code("jump ch1_end")
+    c.label("ch1_walking_corpse")
+    c.emit("BAD ROUTE B", 1, 27)
+    c.code("jump ch1_end")
+
+    c.label("ch1_infirmary")
+    c.code('$ scene_ambience()')
+    c.code('$ energy_visible = False')
+    c.emit("SPECIAL ROUTE S", 1, 19)
+    c.code("if breakfast_eaten:")
+    c.emit("SPECIAL ROUTE S", 21, 23, 2)
+    c.code("elif coffee_only:")
+    c.emit("SPECIAL ROUTE S", 24, 29, 2)
+    c.code("else:")
+    c.emit("SPECIAL ROUTE S", 30, 34, 2)
+    c.emit("SPECIAL ROUTE S", 34, 63)
+    c.code("jump ch1_end")
+
+    c.label("ch1_end")
+    c.code("$ finish_chapter1()")
+    c.code("$ scene_ambience()")
+    c.code("hide screen energy_hud")
+    c.code("call screen chapter1_end")
+    c.code("return")
+    c.write()
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--outline", action="store_true")
+    args = parser.parse_args()
+    sections = read_sections()
+    if args.outline:
+        for key, items in sections.items():
+            if key in ("0", "16", "17", "18"):
+                continue
+            print("SECTION", key)
+            for index, item in enumerate(items):
+                print(index, item[0], item[1], item[2].replace("\n", " / ")[:85])
+    else:
+        compile_chapter(sections)

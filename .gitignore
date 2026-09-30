@@ -1,4 +1,5 @@
 # Ren'Py generates these when launching or linting a project.
+game/**/*.rpyc
 game/*.rpyc
 game/cache/
 game/saves/
@@ -8,3 +9,10 @@ game/errors.txt
 
 # Local playtest builds are delivered separately from the source repository.
 dist/
+
+# Isolated test data never belongs to a player's saves or to source control.
+tests/rebuild/isolated-saves/
+tests/rebuild/boot-saves/
+tests/rebuild/runner-*/
+migration/rebuild_playtest_saves/
+tools/__pycache__/
